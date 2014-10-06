@@ -1,0 +1,9 @@
+- Lab 0: Finished by objectkuan
+- Lab 1: In process by objectkuan
+- Lab 2: Not started
+- Lab 3: Not started
+- Lab 4: Not started
+- Lab 5: Not started
+- Lab 6: Not started
+- Lab 7: Not started
+- Lab 8: Not started
