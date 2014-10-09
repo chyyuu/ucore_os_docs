@@ -5,13 +5,13 @@
 
 - Lab 0: Finished by objectkuan
 - Lab 1: Finished by objectkuan
-- Lab 2: Not started
-- Lab 3: Not started
-- Lab 4: Not started
-- Lab 5: Not started
-- Lab 6: Not started
-- Lab 7: Not started
-- Lab 8: Not started
+- Lab 2: Finished by bqh
+- Lab 3: Finished by bqh
+- Lab 4: Finished by bqh
+- Lab 5: Finished by bqh
+- Lab 6: Finished by bqh
+- Lab 7: Finished by bqh
+- Lab 8: Finished by bqh
 
 ## Caution
 
