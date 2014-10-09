@@ -225,7 +225,7 @@ SECTIONS {
 
 这样ucore给一个用户进程具体设定的虚拟内存空间（kern/mm/memlayout.h）如下所示：
 
-![image](lab5.files/image001.png)
+![image](lab5/image001.png)
 
 #### 3. 创建并执行用户进程 
 

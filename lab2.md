@@ -32,7 +32,7 @@ default\_free\_pages等相关函数。请仔细查看和理解default\_pmm.c中�
 in
 kern/mm/pmm.c，实现其功能。请仔细查看和理解get\_pte函数中的注释。get\_pte函数的调用关系图如下所示：
 
-![image](lab2.files/image001.png)    
+![image](lab2/image001.png)    
 图1 get\_pte函数的调用关系图
 
 **练习3：释放某虚地址所在的页并取消对应二级页表项的映射（需要编程）**
@@ -40,7 +40,7 @@ kern/mm/pmm.c，实现其功能。请仔细查看和理解get\_pte函数中的�
 当释放一个包含某虚地址的物理内存页时，需要让对应此物理内存页的管理数据结构Page做相关的清除处理，使得此物理内存页成为空闲；另外还需把表示虚地址与物理地址对应关系的二级页表项清除。请仔细查看和理解page\_remove\_pte函数中的注释。为此，需要补全在
 kern/mm/pmm.c中的page\_remove\_pte函数。page\_remove\_pte函数的调用关系图如下所示：
 
-![image](lab2.files/image002.png)   
+![image](lab2/image002.png)   
 图2 page\_remove\_pte函数的调用关系图
 
 **扩展练习Challenge：任意大小的内存单元slub分配算法（需要编程）**
@@ -285,7 +285,7 @@ struct pmm_manager {
 重点是实现init\_memmap/ alloc\_pages/
 free\_pages这三个函数。当完成物理内存页管理初始化工作后，计算机系统的内存布局如下图所示：
 
-![image](lab2.files/image003.png)   
+![image](lab2/image003.png)   
 图3 计算机系统的内存布局
 
 ### 3.4 物理内存页分配算法实现 
@@ -384,7 +384,7 @@ default\_free\_pages函数的实现其实是default\_alloc\_pages的逆过程，
 体系结构将内存地址分成三种：逻辑地址（也称虚地址）、线性地址和物理地址。逻辑地址即是程序指令中使用的地址，物理地址是实际访问内存的地址。逻
 辑地址通过段式管理的地址映射可以得到线性地址，线性地址通过页式管理的地址映射得到物理地址。
 
- ![image](lab2.files/image004.png)   
+ ![image](lab2/image004.png)   
  图 4 段页式管理总体框架图
 
 段式管理前一个实验已经讨论过。在 ucore
@@ -392,13 +392,13 @@ default\_free\_pages函数的实现其实是default\_alloc\_pages的逆过程，
 OS 实现也是不加区分的）。对段式管理有兴趣的同学可以参照《Intel® 64 and
 IA-32Architectures Software Developer ’s Manual – Volume 3A》3.2 节。
 
-![image](lab2.files/image005.png)如图5所示，页式管理将线性地址分成三部分（图中的
+![image](lab2/image005.png)如图5所示，页式管理将线性地址分成三部分（图中的
 Linear Address 的 Directory 部分、 Table 部分和 Offset 部分）。ucore
 的页式管理通过一个二级的页表实现。一级页表的起始物理地址存放在 cr3
 寄存器中，这个地址必须是一个页对齐的地址，也就是低 12 位必须为
 0。目前，ucore 用boot\_cr3（mm/pmm.c）记录这个值。
 
-![image](lab2.files/image006.png)    
+![image](lab2/image006.png)    
 图 5 分页机制管理
 
 ### 3.5.2建立段页式管理中需要考虑的关键问题
@@ -496,7 +496,7 @@ pte_t  *get_pte (pde_t *pgdir,  uintptr_t la, bool  create)
 ```
 下面的调用关系图可以比较好地看出get\_pte在实现上诉流程中的位置：
 
-![image](lab2.files/image007.png)    
+![image](lab2/image007.png)    
 图6 get\_pte调用关系图
 
 这里涉及到三个类型pte t、pde t和uintptr
@@ -567,7 +567,7 @@ boot_pgdir[0] = 0;
 ```
 在page\_init函数建立完实现物理内存一一映射和页目录表自映射的页目录表和页表后，一旦使能分页机制，则ucore看到的内核虚拟地址空间如下图所示：
 
-![说明: proj5-vm-map](lab2.files/image008.png)   
+![说明: proj5-vm-map](lab2/image008.png)   
 图7 使能分页机制后的虚拟地址空间图
 
 ### 3.5.4不同运行阶段的地址映射关系
@@ -669,7 +669,7 @@ vpt+0xF8000000/0x1000=0xFAC00000+0xF8000=0xFACF8000
 
 在pmm.c中的函数print\_pgdir就是基于ucore的页表自映射方式完成了对整个页目录表和页表的内容扫描和打印。注意，这里不会出现某个页表的虚地址与页目录表虚地址相同的情况。
 
-![image](lab2.files/image009.png)![image](lab2.files/image010.png)![image](lab2.files/image011.png)print
+![image](lab2/image009.png)![image](lab2/image010.png)![image](lab2/image011.png)print
 pgdir函数使得 ucore 具备和 qemu 的info pg相同的功能，即print pgdir能
 够从内存中，将当前页表内有效数据（PTE\_P）印出来。拷贝出的格式如下所示:
 ```
@@ -704,9 +704,9 @@ PDE(001) fac00000-fb000000 00400000 -rw
 1. PTE 中输出的权限是 PTE 表中的数据给出的，并没有和 PDE
 表中权限做与运算。         
 2.
-![image](lab2.files/image012.png)整个print\_pgdir函数强调两点：第一是相同权限，第二是连续。      
+![image](lab2/image012.png)整个print\_pgdir函数强调两点：第一是相同权限，第二是连续。      
 3.
-![image](lab2.files/image013.png)print\_pgdir中用到了vpt和vpd两个变量。可以参
+![image](lab2/image013.png)print\_pgdir中用到了vpt和vpd两个变量。可以参
 考VPT和PGADDR两个宏。    
 
 自映射机制还可方便用户态程序访问页表。因为页表是内核维护的，用户程序很难知道自己页表的映射结构。VPT

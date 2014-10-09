@@ -163,7 +163,7 @@ page\_fault函数不知道哪些是“合法”的虚拟页，原因是ucore还�
 fault异常时，可获得访问的内存的方式（读或写）以及具体的虚拟内存地址，这样ucore就可以查询此地址，看是否属于vma\_struct数据结构中描述的合法地址范围中，如果在，则可根据具体情况进行请求调页/页换入换出处理（这就是练习2涉及的部分）；如果不在，则报错。mm\_struct和vma\_struct数据结构结合页表表示虚拟地址空间和物理地址空间的示意图如下所示：
 
 图 虚拟地址空间和物理地址空间的示意图  
-![image](lab3.files/image001.png)   
+![image](lab3/image001.png)   
 
 在ucore中描述应用程序对虚拟内存“需求”的数据结构是vma\_struct（定义在vmm.h中），以及针对vma\_struct的函数操作。这里把一个vma\_struct结构的变量简称为vma变量。vma\_struct的定义如下：
 ```
@@ -265,7 +265,7 @@ trap--\> trap\_dispatch--\>pgfault\_handler--\>do\_pgfault
 
 图 do\_pgfault的调用关系图
 
-![image](lab3.files/image002.png)
+![image](lab3/image002.png)
 
 产生页错误异常后，CPU把引起页错误异常的虚拟地址装到寄存器CR2中，并给出了出错码（tf-\>tf\_err），指示引起页错误异常的存储器访问的类型。而中断服务例程会调用页错误异常处理函数do\_pgfault进行具体处理。页错误异常处理是实现按需分页、swap
 in/out的关键之处。
