@@ -49,8 +49,7 @@ vpt+0xF8000000/0x1000=0xFAC00000+0xF8000=0xFACF8000
 
 在pmm.c中的函数print\_pgdir就是基于ucore的页表自映射方式完成了对整个页目录表和页表的内容扫描和打印。注意，这里不会出现某个页表的虚地址与页目录表虚地址相同的情况。
 
-![image](lab2_figs/image009.png)![image](lab2_figs/image010.png)![image](lab2_figs/image011.png)print
-pgdir函数使得 ucore 具备和 qemu 的info pg相同的功能，即print pgdir能
+print\_pgdir函数使得 ucore 具备和 qemu 的info pg相同的功能，即print pgdir能
 够从内存中，将当前页表内有效数据（PTE\_P）印出来。拷贝出的格式如下所示:
 ```
 PDE(0e0)  c0000000-f8000000  38000000  urw
@@ -84,9 +83,9 @@ PDE(001) fac00000-fb000000 00400000 -rw
 1. PTE 中输出的权限是 PTE 表中的数据给出的，并没有和 PDE
 表中权限做与运算。
 2.
-![image](lab2_figs/image012.png)整个print\_pgdir函数强调两点：第一是相同权限，第二是连续。
+整个print\_pgdir函数强调两点：第一是相同权限，第二是连续。
 3.
-![image](lab2_figs/image013.png)print\_pgdir中用到了vpt和vpd两个变量。可以参
+print\_pgdir中用到了vpt和vpd两个变量。可以参
 考VPT和PGADDR两个宏。
 
 自映射机制还可方便用户态程序访问页表。因为页表是内核维护的，用户程序很难知道自己页表的映射结构。VPT

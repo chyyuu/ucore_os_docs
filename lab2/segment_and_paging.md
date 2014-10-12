@@ -4,7 +4,7 @@
 体系结构将内存地址分成三种：逻辑地址（也称虚地址）、线性地址和物理地址。逻辑地址即是程序指令中使用的地址，物理地址是实际访问内存的地址。逻
 辑地址通过段式管理的地址映射可以得到线性地址，线性地址通过页式管理的地址映射得到物理地址。
 
- ![image](lab2_figs/image004.png)
+ ![](../lab2_figs/image004.png)
  图 4 段页式管理总体框架图
 
 段式管理前一个实验已经讨论过。在 ucore
@@ -12,11 +12,11 @@
 OS 实现也是不加区分的）。对段式管理有兴趣的同学可以参照《Intel® 64 and
 IA-32Architectures Software Developer ’s Manual – Volume 3A》3.2 节。
 
-![image](lab2_figs/image005.png)如图5所示，页式管理将线性地址分成三部分（图中的
+如图5所示，页式管理将线性地址分成三部分（图中的
 Linear Address 的 Directory 部分、 Table 部分和 Offset 部分）。ucore
 的页式管理通过一个二级的页表实现。一级页表的起始物理地址存放在 cr3
 寄存器中，这个地址必须是一个页对齐的地址，也就是低 12 位必须为
 0。目前，ucore 用boot\_cr3（mm/pmm.c）记录这个值。
 
-![image](lab2_figs/image006.png)
+![](../lab2_figs/image006.png)
 图 5 分页机制管理

@@ -16,7 +16,7 @@ default\_free\_pages等相关函数。请仔细查看和理解default\_pmm.c中�
 in
 kern/mm/pmm.c，实现其功能。请仔细查看和理解get\_pte函数中的注释。get\_pte函数的调用关系图如下所示：
 
-![image](lab2_figs/image001.png)
+![](../lab2_figs/image001.png)
 图1 get\_pte函数的调用关系图
 
 **练习3：释放某虚地址所在的页并取消对应二级页表项的映射（需要编程）**
@@ -24,7 +24,7 @@ kern/mm/pmm.c，实现其功能。请仔细查看和理解get\_pte函数中的�
 当释放一个包含某虚地址的物理内存页时，需要让对应此物理内存页的管理数据结构Page做相关的清除处理，使得此物理内存页成为空闲；另外还需把表示虚地址与物理地址对应关系的二级页表项清除。请仔细查看和理解page\_remove\_pte函数中的注释。为此，需要补全在
 kern/mm/pmm.c中的page\_remove\_pte函数。page\_remove\_pte函数的调用关系图如下所示：
 
-![image](lab2_figs/image002.png)
+![](../lab2_figs/image002.png)
 图2 page\_remove\_pte函数的调用关系图
 
 **扩展练习Challenge：任意大小的内存单元slub分配算法（需要编程）**

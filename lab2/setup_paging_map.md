@@ -81,7 +81,7 @@ pte_t  *get_pte (pde_t *pgdir,  uintptr_t la, bool  create)
 ```
 下面的调用关系图可以比较好地看出get\_pte在实现上诉流程中的位置：
 
-![image](lab2_figs/image007.png)
+![](../lab2_figs/image007.png)
 图6 get\_pte调用关系图
 
 这里涉及到三个类型pte t、pde t和uintptr
@@ -146,11 +146,12 @@ boot_pgdir[0] = boot_pgdir[PDX(KERNBASE)];
 就可能导致打开分页之后内核
 crash，在后面的试验中，也的确出现了这种情况。解决方法同样简单，就是拷贝更多的高地址项到低地址。
 
-当执行完毕gdt\_init函数后，新的段页式映射已经建立好了，上面的0\~4MB的线性地址与0\~4MB的物理地址一一映射关系已经没有用了。所以可以通过如下语句解除这个老的映射关系。
+当执行完毕gdt\_init函数后，新的段页式映射已经建立好了，上面的0\~4MB的线性地址与0\~4MB的物理地址一一映射关系已经没有用了。
+所以可以通过如下语句解除这个老的映射关系。
 ```
 boot_pgdir[0] = 0;
 ```
 在page\_init函数建立完实现物理内存一一映射和页目录表自映射的页目录表和页表后，一旦使能分页机制，则ucore看到的内核虚拟地址空间如下图所示：
 
-![说明: proj5-vm-map](lab2/image008.png)
+![](../lab2/image008.png)
 图7 使能分页机制后的虚拟地址空间图

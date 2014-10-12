@@ -97,6 +97,6 @@ struct pmm_manager {
 重点是实现init\_memmap/ alloc\_pages/
 free\_pages这三个函数。当完成物理内存页管理初始化工作后，计算机系统的内存布局如下图所示：
 
-![image](./lab2_figs/image003.png)
+![](../lab2_figs/image003.png)
 图3 计算机系统的内存布局
 
