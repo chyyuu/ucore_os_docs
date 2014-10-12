@@ -1,22 +1,10 @@
+# ucore实验指导书和源码网址
 
-# Translation project of uCore documents, from HTML generated from DOCS, to MARKDOWN
+- [ucore实验指导书](http://objectkuan.gitbooks.io/ucore-docs/)
+- [ucore labs 1-8 源码和参考答案 ](https://github.com/chyyuu/mooc_os_lab)
 
-## Process
+# 注意
+- 如果您有好的建议，或发现书中的错误等 (yuchen AT tsinghua.edu.cn, objectkuan AT gmail.com, xuyongjiande AT gmail.com ). 非常感谢！
 
-- Lab 0: Finished by objectkuan
-- Lab 1: Finished by objectkuan
-- Lab 2: Finished by bqh
-- Lab 3: Finished by bqh
-- Lab 4: Finished by bqh
-- Lab 5: Finished by bqh
-- Lab 6: Finished by bqh
-- Lab 7: Finished by bqh
-- Lab 8: Finished by bqh
-
-## Caution
-
-- DO NOT use 1. 2. 3. and - - - alternately. They will interrupt each other. Instead using (1) (2) (3) and [1] [2] [3] is OK
-- Now each lab is finished with the image dir's name changed by removing the ".files" suffix.
-- Fisrt copy the content of one lab from the html file to a md file, and add formatiting.
 
 
