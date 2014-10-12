@@ -1,7 +1,7 @@
 ### 项目组成
 
 表1： 实验二文件列表
-```
+```bash
 |-- boot
 | |-- asm.h
 | |-- bootasm.S
@@ -47,13 +47,13 @@ pmm.c包含了对此物理内存管理类框架的访问，以及与建立、修
 **编译方法**
 
 编译并运行代码的命令如下：
-```
+```bash
 make
 
 make qemu
 ```
 则可以得到如下显示界面（仅供参考）
-```
+```bash
 chenyu$ make qemu
 (THU.CST) os is loading ...
 
