@@ -13,7 +13,7 @@ General Register(通用寄存器)：EAX/EBX/ECX/EDX/ESI/EDI/ESP/EBP这些寄存�
 	EDI：目的地址指针寄存器
 	EBP：基址指针寄存器
 	ESP：堆栈指针寄存器
-![通用寄存器](./lab0_figs/image003.png "通用寄存器")
+![通用寄存器](../lab0_figs/image003.png "通用寄存器")
 
 Segment Register(段寄存器，也称 Segment Selector，段选择符，段选择子)：除了8086的4个段外(CS,DS,ES,SS)，80386还增加了两个段FS，GS,这些段寄存器都是16位的，它们的含义如下：
 
@@ -24,13 +24,13 @@ Segment Register(段寄存器，也称 Segment Selector，段选择符，段选�
 	FS：附加段
 	GS 附加段
 
-![段寄存器](./lab0_figs/image004.png "段寄存器")
+![段寄存器](../lab0_figs/image004.png "段寄存器")
 Instruction Pointer(指令指针寄存器)：EIP的低16位就是8086的IP，它存储的是下一条要执行指令的内存地址，在分段地址转换中，表示指令的段内偏移地址。
  
-![状态和指令寄存器](./lab0_figs/image005.png "状态和指令寄存器")
+![状态和指令寄存器](../lab0_figs/image005.png "状态和指令寄存器")
 Flag Register(标志寄存器)：EFLAGS,和8086的16位标志寄存器相比，增加了4个控制位，这20位控制/标志位的位置如下图所示：
  
-![状态寄存器](./lab0_figs/image006.png "状态寄存器")
+![状态寄存器](../lab0_figs/image006.png "状态寄存器")
 
 相关的控制/标志位含义是：
 
