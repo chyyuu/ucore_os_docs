@@ -80,5 +80,6 @@
     * [信号量](lab7/lab7_3_3_semaphore.md)
     * [管程和条件变量](lab7/lab7_3_4_monitors.md)
   * [实验报告要求](lab7/lab7_4_lab_requirement.md)
+  * [附录](lab7/lab7_5_appendix.md)
 * [Lab 8](lab8.md)
 
