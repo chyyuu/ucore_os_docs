@@ -1,7 +1,7 @@
 
 #### 2.2.1 开发OS实验的简单步骤
 
-在校内OS FTP服务器上或在github网站（https://github.com/chyyuu/ucore_pub）可下载我们提供的lab1~lab8实验软件和文档中，大致经过如下过程就可以完成使用。
+在校内OS FTP服务器上或在github网站[https://github.com/chyyuu/ucore_pub](https://github.com/chyyuu/ucore_pub）可下载我们提供的lab1~lab8实验软件和文档中，大致经过如下过程就可以完成使用。
 
 1. 下载&解压软件包 例如执行：tar jxf lab1.tar.bz2
 2. 进入各个OS实验工程目录 例如： cd lab1
