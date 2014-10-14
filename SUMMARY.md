@@ -43,8 +43,7 @@
   * [了解ucore编程方法和通用数据结构](lab0/lab0_2_6_ucore_programming.md)
     * [2.6.1](lab0/lab0_2_6_1_oop.md)
     * [通用数据结构双向循环链表](lab0/lab0_2_6_2_generic_data_structure.md)
-     * [双向循环链表](lab0/lab0_2_6_2_1_linked_list.md)
-
+      * [双向循环链表](lab0/lab0_2_6_2_1_linked_list.md)
 * [Lab 1](lab1.md)
 * [Lab 2 物理内存管理](lab2.md)
   * [实验目的](lab2/lab2_3_1_phymemlab_goal.md)
