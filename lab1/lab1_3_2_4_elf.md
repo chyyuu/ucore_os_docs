@@ -1,11 +1,11 @@
 
 #### 3.2.4 ELF文件格式概述
 
-ELF(Executable and linking format)文件格式是Linux系统下的一种常用目标文件(object file)格式，有三种主要类型: 
+ELF(Executable and linking format)文件格式是Linux系统下的一种常用目标文件(object file)格式，有三种主要类型:
 
 - 用于执行的可执行文件(executable file)，用于提供程序的进程映像，加载的内存执行。 这也是本实验的OS文件类型。
-- 用于连接的可重定位文件(relocatable file)，可与其它目标文件一起创建可执行文件和共享目标文件。 
-- 共享目标文件(shared object file),连接器可将它与其它可重定位文件和共享目标文件连接成其它的目标文件，动态连接器又可将它与可执行文件和其它共享目标文件结合起来创建一个进程映像。 
+- 用于连接的可重定位文件(relocatable file)，可与其它目标文件一起创建可执行文件和共享目标文件。
+- 共享目标文件(shared object file),连接器可将它与其它可重定位文件和共享目标文件连接成其它的目标文件，动态连接器又可将它与可执行文件和其它共享目标文件结合起来创建一个进程映像。
 
 这里只分析与本实验相关的ELF可执行文件类型。ELF header在文件开始处描述了整个文件的组织。ELF的文件头包含整个执行文件的控制结构，其定义在elf.h中：
 
@@ -36,8 +36,8 @@ struct proghdr {
   uint type;   // 段类型
   uint offset;  // 段相对文件头的偏移值
   uint va;     // 段的第一个字节将被放到内存中的虚拟地址
-  uint pa;   
-  uint filesz; 
+  uint pa;
+  uint filesz;
   uint memsz;  // 段在内存映像中占用的字节数
   uint flags;
   uint align;

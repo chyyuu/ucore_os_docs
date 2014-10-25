@@ -41,7 +41,7 @@ Virtual Address= Linear Address
 
 改为
 
-Virtual Address=Linear Address-0xC0000000
+Virtual Address=Linear Address + 0xC0000000
 
 由于gcc编译出的虚拟起始地址从0xC0100000开始，ucore被bootloader放置在从物理地址0x100000处开始的物理内存中。所以当kern\_entry函数完成新的段映射关系后，且ucore在没有建立好页映射机制前，CPU按照ucore中的虚拟地址执行，能够被分段机制映射到正确的物理地址上，确保ucore运行正确。
 

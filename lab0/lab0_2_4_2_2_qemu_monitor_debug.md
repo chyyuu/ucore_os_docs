@@ -31,13 +31,13 @@ qemu中monitor的常用命令：
 	0x000fe05b: xor %ax, %ax
 
 step命令为单步命令，即qemu执行一步，能够跳过 breakpoint 断点执行。如果此时使用cont命令，则qemu 运行改为连续执行。
- 
+
 log命令能够保存qemu模拟过程产生的信息（与qemu运行参数 `-d' 相同），具体参数可以参考命令帮助。产生的日志信息保存在 “/tmp/qemu.log” 中，例如使用 'log in_asm'命令以后，运行过程产生的的qemu.log 文件为：
 
 	1  ----------------
 	2  IN:
 	3  0xfffffff0:  ljmp   $0xf000,$0xe05b
-	4  
+	4
 	5  ----------------
 	6  IN:
 	7  0x000fe05b:  xor    %ax,%ax

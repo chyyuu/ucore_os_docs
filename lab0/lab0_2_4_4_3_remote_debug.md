@@ -10,7 +10,7 @@
 	(gdb)  file obj/kernel/kernel.elf
 
 之后gdb就会载入这个文件中的符号信息了。
- 
+
 通过gdb可以对ucore代码进行调试，以lab1中调试memset函数为例：
 
 (1)  运行 qemu -S -s -hda ucore.img -monitor stdio

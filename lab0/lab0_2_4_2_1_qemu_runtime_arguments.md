@@ -58,7 +58,7 @@
 				输出日志到 qemu.log 文件。
 
 其他参数说明可以参考：http://bellard.org/qemu/qemu-doc.html#SEC15 。其他qemu的安装和使用的说明可以参考http://bellard.org/qemu/user-doc.html。
- 
+
 或者在命令行收入 qemu (没有参数) 显示帮助。
 
 在实验中，例如 lab1，可能用到的命令如：
@@ -68,4 +68,4 @@
 或
 
 	qemu -S -s -hda ucore.img -monitor stdio	# 用于与gdb配合进行源码调试
-	
+

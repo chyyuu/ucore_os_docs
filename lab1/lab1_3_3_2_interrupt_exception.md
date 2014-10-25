@@ -18,7 +18,7 @@ IDT和IDTR寄存器的结构和关系如下图所示：
 ![IDT和IDTR寄存器的结构和关系图](../lab1_figs/image007.png "IDT和IDTR寄存器的结构和关系图")
 图8 IDT和IDTR寄存器的结构和关系图
 
-在保护模式下，最多会存在256个Interrupt/Exception Vectors。范围[0，31]内的32个向量被异常Exception和NMI使用，但当前并非所有这32个向量都已经被使用，有几个当前没有被使用的，请不要擅自使用它们，它们被保留，以备将来可能增加新的Exception。范围[32，255]内的向量被保留给用户定义的Interrupts。Intel没有定义，也没有保留这些Interrupts。用户可以将它们用作外部I/O设备中断（8259A IRQ），或者系统调用（System Call 、Software Interrupts）等。 
+在保护模式下，最多会存在256个Interrupt/Exception Vectors。范围[0，31]内的32个向量被异常Exception和NMI使用，但当前并非所有这32个向量都已经被使用，有几个当前没有被使用的，请不要擅自使用它们，它们被保留，以备将来可能增加新的Exception。范围[32，255]内的向量被保留给用户定义的Interrupts。Intel没有定义，也没有保留这些Interrupts。用户可以将它们用作外部I/O设备中断（8259A IRQ），或者系统调用（System Call 、Software Interrupts）等。
 
 (2)	IDT gate descriptors
 
@@ -51,7 +51,7 @@ Interrupts/Exceptions应该使用Interrupt Gate和Trap Gate，它们之间的唯
 	- 如果存在特权级转换（从内核态转换到用户态），则还需要从内核栈中弹出用户态栈的ss和esp，这样也意味着栈也被切换回原先使用的用户态的栈了；
 	- 如果此次处理的是带有错误码（errorCode）的异常，CPU在恢复先前程序的现场时，并不会弹出errorCode。这一步需要通过软件完成，即要求相关的中断服务例程在调用iret返回之前添加出栈代码主动弹出errorCode。
 
-下图显示了从中断向量到GDT中相应中断服务程序起始位置的定位方式: 
+下图显示了从中断向量到GDT中相应中断服务程序起始位置的定位方式:
 
 ![中断向量与中断服务例程起始地址的关系](../lab1_figs/image009.png "中断向量与中断服务例程起始地址的关系")
 图10 中断向量与中断服务例程起始地址的关系
