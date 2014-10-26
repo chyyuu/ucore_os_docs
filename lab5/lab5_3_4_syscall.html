@@ -1,0 +1,3398 @@
+<!DOCTYPE HTML>
+<html lang="en-US" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <title>系统调用实现 | ucore实验指导书和源码网址</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 1.1.0">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    
+    <link rel="next" href="../lab5/lab5_4_lab_requirement.html" />
+    
+    
+    <link rel="prev" href="../lab5/lab5_3_3_process_exit_wait.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+<link rel="stylesheet" href="../gitbook/style.css">
+
+
+        
+    <div class="book" data-level="6.3.4" data-basepath=".." data-revision="1414296360940">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+    	
+    	
+    	
+
+        
+
+        
+    
+        
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                         Introduction
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1" data-path="lab0.html">
+            
+                
+                    <a href="../lab0.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                         Lab 0
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.1" data-path="lab0/lab0_1_goals.html">
+            
+                
+                    <a href="../lab0/lab0_1_goals.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                         实验目的
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2" data-path="lab0/lab0_2_prepare.html">
+            
+                
+                    <a href="../lab0/lab0_2_prepare.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                         准备知识
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.2.1" data-path="lab0/lab0_2_1_about_labs.html">
+            
+                
+                    <a href="../lab0/lab0_2_1_about_labs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.1.</b>
+                        
+                         了解OS实验
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.2" data-path="lab0/lab0_2_2_environment.html">
+            
+                
+                    <a href="../lab0/lab0_2_2_environment.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.2.</b>
+                        
+                         设置实验环境
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.2.2.1" data-path="lab0/lab0_2_2_1_lab_steps.html">
+            
+                
+                    <a href="../lab0/lab0_2_2_1_lab_steps.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.2.1.</b>
+                        
+                         开发OS实验的简单步骤
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.2.2" data-path="lab0/lab0_2_2_2_vm_experiment.html">
+            
+                
+                    <a href="../lab0/lab0_2_2_2_vm_experiment.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.2.2.</b>
+                        
+                         通过虚拟机使用Linux实验环境（推荐：最容易的实验环境安装方法）
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.2.3" data-path="lab0/lab0_2_2_3_install.html">
+            
+                
+                    <a href="../lab0/lab0_2_2_3_install.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.2.3.</b>
+                        
+                         安装使用Linux实验环境（适合希望自己安装Linux系统的同学）
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.2.2.3.1" data-path="lab0/lab0_2_2_3_1_softwares.html">
+            
+                
+                    <a href="../lab0/lab0_2_2_3_1_softwares.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.2.3.1.</b>
+                        
+                         实验中可能使用的软件
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.3" data-path="lab0/lab0_2_3_tools.html">
+            
+                
+                    <a href="../lab0/lab0_2_3_tools.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.</b>
+                        
+                         了解编程开发调试的基本工具
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.2.3.1" data-path="lab0/lab0_2_3_1_gcc_usage.html">
+            
+                
+                    <a href="../lab0/lab0_2_3_1_gcc_usage.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.1.</b>
+                        
+                         gcc的基本用法
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.2.3.1.1" data-path="lab0/lab0_2_3_1_1_compile_c_prog.html">
+            
+                
+                    <a href="../lab0/lab0_2_3_1_1_compile_c_prog.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.1.1.</b>
+                        
+                         编译简单的 C 程序
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.3.1.2" data-path="lab0/lab0_2_3_1_2_att_asm.html">
+            
+                
+                    <a href="../lab0/lab0_2_3_1_2_att_asm.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.1.2.</b>
+                        
+                         AT&amp;T汇编基本语法
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.3.1.3" data-path="lab0/lab0_2_3_1_3_gcc_inline_asm.html">
+            
+                
+                    <a href="../lab0/lab0_2_3_1_3_gcc_inline_asm.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.1.3.</b>
+                        
+                         GCC内联汇编
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.3.1.4" data-path="lab0/lab0_2_3_1_4_extend_gcc_asm.html">
+            
+                
+                    <a href="../lab0/lab0_2_3_1_4_extend_gcc_asm.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.1.4.</b>
+                        
+                         扩展GCC内联汇编
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.3.2" data-path="lab0/lab0_2_3_2_make_makefile.html">
+            
+                
+                    <a href="../lab0/lab0_2_3_2_make_makefile.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.2.</b>
+                        
+                         make和Makefile
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.3.3" data-path="lab0/lab0_2_3_3_gdb.html">
+            
+                
+                    <a href="../lab0/lab0_2_3_3_gdb.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.3.</b>
+                        
+                         gdb使用
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.3.4" data-path="lab0/lab0_2_3_4_further.html">
+            
+                
+                    <a href="../lab0/lab0_2_3_4_further.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.4.</b>
+                        
+                         进一步的相关内容
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.4" data-path="lab0/lab0_2_4_debug_with_emulator.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_debug_with_emulator.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.</b>
+                        
+                         基于硬件模拟器实现源码级调试
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.2.4.1" data-path="lab0/lab0_2_4_1_install_qemu.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_1_install_qemu.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.1.</b>
+                        
+                         安装硬件模拟器QEMU
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.2.4.1.1" data-path="lab0/lab0_2_4_1_1_linux_runtime.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_1_1_linux_runtime.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.1.1.</b>
+                        
+                         Linux运行环境
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.4.1.2" data-path="lab0/lab0_2_4_1_2_linux_source_install.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_1_2_linux_source_install.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.1.2.</b>
+                        
+                         Linux环境下的源码级安装过程
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.2.4.1.2.1" data-path="lab0/lab0_2_4_1_2_1_patch_qemu.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_1_2_1_patch_qemu.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.1.2.1.</b>
+                        
+                         获得并应用修改
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.4.1.2.2" data-path="lab0/lab0_2_4_1_2_2_configure_make_install_qemu.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_1_2_2_configure_make_install_qemu.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.1.2.2.</b>
+                        
+                         配置、编译和安装
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.4.2" data-path="lab0/lab0_2_4_2_qemu_usage.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_2_qemu_usage.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.2.</b>
+                        
+                         使用硬件模拟器QEMU
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.2.4.2.1" data-path="lab0/lab0_2_4_2_1_qemu_runtime_arguments.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_2_1_qemu_runtime_arguments.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.2.1.</b>
+                        
+                         运行参数
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.4.2.2" data-path="lab0/lab0_2_4_2_2_qemu_monitor_debug.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_2_2_qemu_monitor_debug.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.2.2.</b>
+                        
+                         常用调试命令
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.4.3" data-path="lab0/lab0_2_4_3_qemu_debug_ucore.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_3_qemu_debug_ucore.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.3.</b>
+                        
+                         基于qemu内建模式调试ucore
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.4.4" data-path="lab0/lab0_2_4_4_gdb_qemu_debug_ucore.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_4_gdb_qemu_debug_ucore.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.4.</b>
+                        
+                         结合gdb和qemu源码级调试ucore
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.2.4.4.1" data-path="lab0/lab0_2_4_4_1_make_obj.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_4_1_make_obj.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.4.1.</b>
+                        
+                         编译可调试的目标文件
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.4.4.2" data-path="lab0/lab0_2_4_4_2_ucore_make.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_4_2_ucore_make.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.4.2.</b>
+                        
+                         ucore 代码编译
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.4.4.3" data-path="lab0/lab0_2_4_4_3_remote_debug.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_4_3_remote_debug.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.4.3.</b>
+                        
+                         使用远程调试
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.4.4.4" data-path="lab0/lab0_2_4_4_4_gdb_config_file.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_4_4_gdb_config_file.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.4.4.</b>
+                        
+                         使用gdb配置文件
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.4.4.5" data-path="lab0/lab0_2_4_4_5_load_debug_target.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_4_5_load_debug_target.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.4.5.</b>
+                        
+                         加载调试目标
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.4.4.6" data-path="lab0/lab0_2_4_4_6_set_debug_arch.html">
+            
+                
+                    <a href="../lab0/lab0_2_4_4_6_set_debug_arch.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.4.6.</b>
+                        
+                         设定调试目标架构
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.5" data-path="lab0/lab0_2_5_cpu_hardware.html">
+            
+                
+                    <a href="../lab0/lab0_2_5_cpu_hardware.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.5.</b>
+                        
+                         了解处理器硬件
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.2.5.1" data-path="lab0/lab0_2_5_1_intel_80386_modes.html">
+            
+                
+                    <a href="../lab0/lab0_2_5_1_intel_80386_modes.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.5.1.</b>
+                        
+                         Intel 80386运行模式
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.5.2" data-path="lab0/lab0_2_5_2_intel_80386_mem.html">
+            
+                
+                    <a href="../lab0/lab0_2_5_2_intel_80386_mem.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.5.2.</b>
+                        
+                         Intel 80386内存架构
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.5.3" data-path="lab0/lab0_2_5_3_intel_80386_registers.html">
+            
+                
+                    <a href="../lab0/lab0_2_5_3_intel_80386_registers.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.5.3.</b>
+                        
+                         Intel 80386寄存器
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.6" data-path="lab0/lab0_2_6_ucore_programming.html">
+            
+                
+                    <a href="../lab0/lab0_2_6_ucore_programming.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.6.</b>
+                        
+                         了解ucore编程方法和通用数据结构
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.2.6.1" data-path="lab0/lab0_2_6_1_oop.html">
+            
+                
+                    <a href="../lab0/lab0_2_6_1_oop.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.6.1.</b>
+                        
+                         面向对象编程方法
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.6.2" data-path="lab0/lab0_2_6_2_generic_data_structure.html">
+            
+                
+                    <a href="../lab0/lab0_2_6_2_generic_data_structure.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.6.2.</b>
+                        
+                         通用数据结构双向循环链表
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.2.6.2.1" data-path="lab0/lab0_2_6_2_1_linked_list.html">
+            
+                
+                    <a href="../lab0/lab0_2_6_2_1_linked_list.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.6.2.1.</b>
+                        
+                         双向循环链表
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2" data-path="lab1.html">
+            
+                
+                    <a href="../lab1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                         Lab 1
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="2.1" data-path="lab1/lab1_1_goals.html">
+            
+                
+                    <a href="../lab1/lab1_1_goals.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                         实验目的
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.2" data-path="lab1/lab1_2_labs.html">
+            
+                
+                    <a href="../lab1/lab1_2_labs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                         实验内容
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="2.2.1" data-path="lab1/lab1_2_1_exercise.html">
+            
+                
+                    <a href="../lab1/lab1_2_1_exercise.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.1.</b>
+                        
+                         练习
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.2.2" data-path="lab1/lab1_2_2_files.html">
+            
+                
+                    <a href="../lab1/lab1_2_2_files.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.2.</b>
+                        
+                         项目组成
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.3" data-path="lab1/lab1_3_booting.html">
+            
+                
+                    <a href="../lab1/lab1_3_booting.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                         从机器启动到操作系统运行的过程
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="2.3.1" data-path="lab1/lab1_3_1_bios_booting.html">
+            
+                
+                    <a href="../lab1/lab1_3_1_bios_booting.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.1.</b>
+                        
+                         BIOS启动过程
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.3.2" data-path="lab1/lab1_3_2_bootloader.html">
+            
+                
+                    <a href="../lab1/lab1_3_2_bootloader.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.2.</b>
+                        
+                         bootloader启动过程
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="2.3.2.1" data-path="lab1/lab1_3_2_1_protection_mode.html">
+            
+                
+                    <a href="../lab1/lab1_3_2_1_protection_mode.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.2.1.</b>
+                        
+                         保护模式和分段机制
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.3.2.2" data-path="lab1/lab1_3_2_2_address_space.html">
+            
+                
+                    <a href="../lab1/lab1_3_2_2_address_space.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.2.2.</b>
+                        
+                         地址空间
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.3.2.3" data-path="lab1/lab1_3_2_3_dist_accessing.html">
+            
+                
+                    <a href="../lab1/lab1_3_2_3_dist_accessing.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.2.3.</b>
+                        
+                         硬盘访问概述
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.3.2.4" data-path="lab1/lab1_3_2_4_elf.html">
+            
+                
+                    <a href="../lab1/lab1_3_2_4_elf.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.2.4.</b>
+                        
+                         ELF文件格式概述
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.3.3" data-path="lab1/lab1_3_3_booting_os.html">
+            
+                
+                    <a href="../lab1/lab1_3_3_booting_os.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.3.</b>
+                        
+                         操作系统启动过程
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="2.3.3.1" data-path="lab1/lab1_3_3_1_function_stack.html">
+            
+                
+                    <a href="../lab1/lab1_3_3_1_function_stack.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.3.1.</b>
+                        
+                         函数堆栈
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.3.3.2" data-path="lab1/lab1_3_3_2_interrupt_exception.html">
+            
+                
+                    <a href="../lab1/lab1_3_3_2_interrupt_exception.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.3.2.</b>
+                        
+                         中断与异常
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.3.3.3" data-path="lab1/lab1_3_3_3_lab1_interrupt.html">
+            
+                
+                    <a href="../lab1/lab1_3_3_3_lab1_interrupt.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.3.3.</b>
+                        
+                         lab1中对中断的处理实现
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.4" data-path="lab1/lab1_4_lab_requirement.html">
+            
+                
+                    <a href="../lab1/lab1_4_lab_requirement.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                         实验报告要求
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.5" data-path="lab1/lab1_5_appendix.html">
+            
+                
+                    <a href="../lab1/lab1_5_appendix.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                         附录“启动后第一条执行的指令”
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3" data-path="lab2.html">
+            
+                
+                    <a href="../lab2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                         Lab 2 物理内存管理
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="3.1" data-path="lab2/lab2_3_1_phymemlab_goal.html">
+            
+                
+                    <a href="../lab2/lab2_3_1_phymemlab_goal.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                         实验目的
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.2" data-path="lab2/lab2_3_2_phymemlab_contents.html">
+            
+                
+                    <a href="../lab2/lab2_3_2_phymemlab_contents.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                         实验内容
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="3.2.1" data-path="lab2/lab2_3_2_1_phymemlab_exercise.html">
+            
+                
+                    <a href="../lab2/lab2_3_2_1_phymemlab_exercise.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.1.</b>
+                        
+                         练习
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.2.2" data-path="lab2/lab2_3_2_2_phymemlab_files.html">
+            
+                
+                    <a href="../lab2/lab2_3_2_2_phymemlab_files.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.2.</b>
+                        
+                         项目组成
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.3" data-path="lab2/lab2_3_3_phymem_manage.html">
+            
+                
+                    <a href="../lab2/lab2_3_3_phymem_manage.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                         物理内存管理
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="3.3.1" data-path="lab2/lab2_3_3_1_phymemlab_overview.html">
+            
+                
+                    <a href="../lab2/lab2_3_3_1_phymemlab_overview.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.1.</b>
+                        
+                         实验执行流程概述
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.3.2" data-path="lab2/lab2_3_3_2_search_phymem_layout.html">
+            
+                
+                    <a href="../lab2/lab2_3_3_2_search_phymem_layout.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.2.</b>
+                        
+                         探测系统物理内存布局
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.3.3" data-path="lab2/lab2_3_3_3_phymem_pagelevel.html">
+            
+                
+                    <a href="../lab2/lab2_3_3_3_phymem_pagelevel.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.3.</b>
+                        
+                         以页为单位管理物理内存
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.3.4" data-path="lab2/lab2_3_3_4_phymem_allocation.html">
+            
+                
+                    <a href="../lab2/lab2_3_3_4_phymem_allocation.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.4.</b>
+                        
+                         物理内存页分配算法实现
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.3.5" data-path="lab2/lab2_3_3_5_paging.html">
+            
+                
+                    <a href="../lab2/lab2_3_3_5_paging.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.5.</b>
+                        
+                         实现分页机制
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="3.3.5.1" data-path="lab2/lab2_3_3_5_1_segment_and_paging.html">
+            
+                
+                    <a href="../lab2/lab2_3_3_5_1_segment_and_paging.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.5.1.</b>
+                        
+                         段页式管理基本概念
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.3.5.2" data-path="lab2/lab2_3_3_5_2_key_problems_in_seg_page.html">
+            
+                
+                    <a href="../lab2/lab2_3_3_5_2_key_problems_in_seg_page.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.5.2.</b>
+                        
+                         建立段页式管理中需要考虑的关键问题
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.3.5.3" data-path="lab2/lab2_3_3_5_3_setup_paging_map.html">
+            
+                
+                    <a href="../lab2/lab2_3_3_5_3_setup_paging_map.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.5.3.</b>
+                        
+                         建立虚拟页和物理页帧的地址映射关系
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.3.5.4" data-path="lab2/lab2_3_3_5_4_maping_relations.html">
+            
+                
+                    <a href="../lab2/lab2_3_3_5_4_maping_relations.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.5.4.</b>
+                        
+                         不同运行阶段的地址映射关系
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.3.6" data-path="lab2/lab2_3_3_6_self_mapping.html">
+            
+                
+                    <a href="../lab2/lab2_3_3_6_self_mapping.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.6.</b>
+                        
+                         自映射机制
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.4" data-path="lab2/lab2_3_4_phymemlab_require.html">
+            
+                
+                    <a href="../lab2/lab2_3_4_phymemlab_require.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                         实验报告要求
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.5" data-path="lab2/lab2_3_5_probe_phymem_methods.html">
+            
+                
+                    <a href="../lab2/lab2_3_5_probe_phymem_methods.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                         附录A. 探测物理内存分布和大小的方法
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.6" data-path="lab2/lab2_3_6_implement_probe_phymem.html">
+            
+                
+                    <a href="../lab2/lab2_3_6_implement_probe_phymem.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                         附录B. 实现物理内存探测
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.7" data-path="lab2/lab2_3_7_phymemlab_concepts.html">
+            
+                
+                    <a href="../lab2/lab2_3_7_phymemlab_concepts.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                         附录C. 链接地址/虚地址/物理地址/加载地址以及edata/end/text的含义
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4" data-path="lab3.html">
+            
+                
+                    <a href="../lab3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                         Lab 3
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="4.1" data-path="lab3/lab3_1_goals.html">
+            
+                
+                    <a href="../lab3/lab3_1_goals.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                         实验目的
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.2" data-path="lab3/lab3_2_lab2.html">
+            
+                
+                    <a href="../lab3/lab3_2_lab2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                         实验内容
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="4.2.1" data-path="lab3/lab3_2_1_exercises.html">
+            
+                
+                    <a href="../lab3/lab3_2_1_exercises.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.1.</b>
+                        
+                         练习
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.2.2" data-path="lab3/lab3_2_2_files.html">
+            
+                
+                    <a href="../lab3/lab3_2_2_files.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.2.</b>
+                        
+                         项目组成
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.3" data-path="lab3/lab3_3_vmm.html">
+            
+                
+                    <a href="../lab3/lab3_3_vmm.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                         虚拟内存管理
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="4.3.1" data-path="lab3/lab3_3_1_vmm_principles.html">
+            
+                
+                    <a href="../lab3/lab3_3_1_vmm_principles.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.1.</b>
+                        
+                         基本原理概述
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.3.2" data-path="lab3/lab3_3_2_labs_steps.html">
+            
+                
+                    <a href="../lab3/lab3_3_2_labs_steps.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.2.</b>
+                        
+                         实验执行流程概述
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.3.3" data-path="lab3/lab3_3_3_data_structures.html">
+            
+                
+                    <a href="../lab3/lab3_3_3_data_structures.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.3.</b>
+                        
+                         关键数据结构和相关函数分析
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.4" data-path="lab3/lab3_4_page_fault_handler.html">
+            
+                
+                    <a href="../lab3/lab3_4_page_fault_handler.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                         Page Fault异常处理
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.5" data-path="lab3/lab3_5_swapping.html">
+            
+                
+                    <a href="../lab3/lab3_5_swapping.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                         页面置换机制的实现
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="4.5.1" data-path="lab3/lab3_5_1_page_swapping.html">
+            
+                
+                    <a href="../lab3/lab3_5_1_page_swapping.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.1.</b>
+                        
+                         页替换算法
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.5.2" data-path="lab3/lab3_5_2_page_swapping_principles.html">
+            
+                
+                    <a href="../lab3/lab3_5_2_page_swapping_principles.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.2.</b>
+                        
+                         页面置换机制实验报告要求
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.6" data-path="lab3/lab3_6_labs_requirement.html">
+            
+                
+                    <a href="../lab3/lab3_6_labs_requirement.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                         实验报告要求
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="5" data-path="lab4.html">
+            
+                
+                    <a href="../lab4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                         Lab 4
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="5.1" data-path="lab4/lab4_1_goals.html">
+            
+                
+                    <a href="../lab4/lab4_1_goals.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                         实验目的
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="5.2" data-path="lab4/lab4_2_labs.html">
+            
+                
+                    <a href="../lab4/lab4_2_labs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                         实验内容
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="5.2.1" data-path="lab4/lab4_2_1_exercises.html">
+            
+                
+                    <a href="../lab4/lab4_2_1_exercises.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.1.</b>
+                        
+                         练习
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="5.2.2" data-path="lab4/lab4_2_2_files.html">
+            
+                
+                    <a href="../lab4/lab4_2_2_files.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.2.</b>
+                        
+                         项目组成
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="5.3" data-path="lab4/lab4_3_kernel_thread_management.html">
+            
+                
+                    <a href="../lab4/lab4_3_kernel_thread_management.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                         内核线程管理
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="5.3.1" data-path="lab4/lab4_3_1_lab_steps.html">
+            
+                
+                    <a href="../lab4/lab4_3_1_lab_steps.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.1.</b>
+                        
+                         实验执行流程概述
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="5.3.2" data-path="lab4/lab4_3_2_pcb.html">
+            
+                
+                    <a href="../lab4/lab4_3_2_pcb.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.2.</b>
+                        
+                         设计关键数据结构 -- 进程控制块
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="5.3.3" data-path="lab4/lab4_3_3_create_exec_kernel_thread.html">
+            
+                
+                    <a href="../lab4/lab4_3_3_create_exec_kernel_thread.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.3.</b>
+                        
+                         创建并执行内核线程
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="5.4" data-path="lab4/lab4_4_labs_requirement.html">
+            
+                
+                    <a href="../lab4/lab4_4_labs_requirement.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                         实验报告要求
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="5.5" data-path="lab4/lab4_5_appendix_a.html">
+            
+                
+                    <a href="../lab4/lab4_5_appendix_a.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                         附录A：实验四的参考输出
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="5.6" data-path="lab4/lab4_6_appendix_b.html">
+            
+                
+                    <a href="../lab4/lab4_6_appendix_b.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.</b>
+                        
+                         附录B：【原理】进程的属性与特征解析
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="6" data-path="lab5.html">
+            
+                
+                    <a href="../lab5.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                         Lab 5
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="6.1" data-path="lab5/lab5_1_goals.html">
+            
+                
+                    <a href="../lab5/lab5_1_goals.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                         实验目的
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="6.2" data-path="lab5/lab5_2_lab2.html">
+            
+                
+                    <a href="../lab5/lab5_2_lab2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                         实验内容
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="6.2.1" data-path="lab5/lab5_2_1_exercises.html">
+            
+                
+                    <a href="../lab5/lab5_2_1_exercises.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.1.</b>
+                        
+                         练习
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="6.2.2" data-path="lab5/lab5_2_2_files.html">
+            
+                
+                    <a href="../lab5/lab5_2_2_files.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.2.</b>
+                        
+                         项目组成
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="6.3" data-path="lab5/lab5_3_user_process.html">
+            
+                
+                    <a href="../lab5/lab5_3_user_process.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                         用户进程管理
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="6.3.1" data-path="lab5/lab5_3_1_lab_steps.html">
+            
+                
+                    <a href="../lab5/lab5_3_1_lab_steps.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.1.</b>
+                        
+                         实验执行流程概述
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="6.3.2" data-path="lab5/lab5_3_2_create_user_process.html">
+            
+                
+                    <a href="../lab5/lab5_3_2_create_user_process.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.2.</b>
+                        
+                         创建用户进程
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="6.3.3" data-path="lab5/lab5_3_3_process_exit_wait.html">
+            
+                
+                    <a href="../lab5/lab5_3_3_process_exit_wait.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.3.</b>
+                        
+                         进程退出和等待进程
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter active" data-level="6.3.4" data-path="lab5/lab5_3_4_syscall.html">
+            
+                
+                    <a href="../lab5/lab5_3_4_syscall.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.4.</b>
+                        
+                         系统调用实现
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="6.4" data-path="lab5/lab5_4_lab_requirement.html">
+            
+                
+                    <a href="../lab5/lab5_4_lab_requirement.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                         实验报告要求
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="6.5" data-path="lab5/lab5_5_appendix.html">
+            
+                
+                    <a href="../lab5/lab5_5_appendix.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                         附录 A：【原理】用户进程的特征
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7" data-path="lab6.html">
+            
+                
+                    <a href="../lab6.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                         Lab 6
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.1" data-path="lab6/lab6_1_goals.html">
+            
+                
+                    <a href="../lab6/lab6_1_goals.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                         实验目的
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2" data-path="lab6/lab6_2_labs.html">
+            
+                
+                    <a href="../lab6/lab6_2_labs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                         实验内容
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.2.1" data-path="lab6/lab6_2_1_exercises.html">
+            
+                
+                    <a href="../lab6/lab6_2_1_exercises.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.1.</b>
+                        
+                         练习
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.2" data-path="lab6/lab6_2_2_files.html">
+            
+                
+                    <a href="../lab6/lab6_2_2_files.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.2.</b>
+                        
+                         项目组成
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3" data-path="lab6/lab6_3_scheduler_design.html">
+            
+                
+                    <a href="../lab6/lab6_3_scheduler_design.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                         调度框架和调度算法设计与实现
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.3.1" data-path="lab6/lab6_3_1_exercises.html">
+            
+                
+                    <a href="../lab6/lab6_3_1_exercises.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.1.</b>
+                        
+                         实验执行流程概述
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.2" data-path="lab6/lab6_3_2_scheduler_implement.html">
+            
+                
+                    <a href="../lab6/lab6_3_2_scheduler_implement.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.2.</b>
+                        
+                         计时器的原理和实现
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.3" data-path="lab6/lab6_3_3_process_state.html">
+            
+                
+                    <a href="../lab6/lab6_3_3_process_state.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.3.</b>
+                        
+                         进程状态
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.4" data-path="lab6/lab6_3_4_process_implement.html">
+            
+                
+                    <a href="../lab6/lab6_3_4_process_implement.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.4.</b>
+                        
+                         进程调度实现
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.3.4.1" data-path="lab6/lab6_3_4_1_kernel_preempt_point.html">
+            
+                
+                    <a href="../lab6/lab6_3_4_1_kernel_preempt_point.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.4.1.</b>
+                        
+                         内核抢占点
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.4.2" data-path="lab6/lab6_3_4_2_process_switch.html">
+            
+                
+                    <a href="../lab6/lab6_3_4_2_process_switch.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.4.2.</b>
+                        
+                         进程切换过程
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.5" data-path="lab6/lab6_3_5_scheduler_framework.html">
+            
+                
+                    <a href="../lab6/lab6_3_5_scheduler_framework.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.5.</b>
+                        
+                         调度框架和调度算法
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.3.5.1" data-path="lab6/lab6_3_5_1_designed.html">
+            
+                
+                    <a href="../lab6/lab6_3_5_1_designed.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.5.1.</b>
+                        
+                         设计思路
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.5.2" data-path="lab6/lab6_3_5_2_data_structure.html">
+            
+                
+                    <a href="../lab6/lab6_3_5_2_data_structure.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.5.2.</b>
+                        
+                         数据结构
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.5.3" data-path="lab6/lab6_3_5_3_scheduler_point_functions.html">
+            
+                
+                    <a href="../lab6/lab6_3_5_3_scheduler_point_functions.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.5.3.</b>
+                        
+                         调度点的相关关键函数
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.5.4" data-path="lab6/lab6_3_5_4_RR.html">
+            
+                
+                    <a href="../lab6/lab6_3_5_4_RR.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.5.4.</b>
+                        
+                         RR 调度算法实现
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.6" data-path="lab6/lab6_3_6_stride_scheduling.html">
+            
+                
+                    <a href="../lab6/lab6_3_6_stride_scheduling.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.6.</b>
+                        
+                         Stride Scheduling
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.3.6.1" data-path="lab6/lab6_3_6_1_basic_method.html">
+            
+                
+                    <a href="../lab6/lab6_3_6_1_basic_method.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.6.1.</b>
+                        
+                         基本思路
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.6.2" data-path="lab6/lab6_3_6_2_priority_queue.html">
+            
+                
+                    <a href="../lab6/lab6_3_6_2_priority_queue.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.6.2.</b>
+                        
+                         使用优先队列实现 Stride Scheduling
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.4" data-path="lab6/lab6_4_labs_requirement.html">
+            
+                
+                    <a href="../lab6/lab6_4_labs_requirement.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                         实验报告要求
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="8" data-path="lab7.html">
+            
+                
+                    <a href="../lab7.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                         Lab 7
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="8.1" data-path="lab7/lab7_1_goals.html">
+            
+                
+                    <a href="../lab7/lab7_1_goals.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                         实验目的
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="8.2" data-path="lab7/lab7_2_labs.html">
+            
+                
+                    <a href="../lab7/lab7_2_labs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                         实验内容
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="8.2.1" data-path="lab7/lab7_2_1_exercises.html">
+            
+                
+                    <a href="../lab7/lab7_2_1_exercises.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.1.</b>
+                        
+                         练习
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="8.2.2" data-path="lab7/lab7_2_2_files.html">
+            
+                
+                    <a href="../lab7/lab7_2_2_files.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.2.</b>
+                        
+                         项目组成
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="8.3" data-path="lab7/lab7_3_synchronization_implement.html">
+            
+                
+                    <a href="../lab7/lab7_3_synchronization_implement.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                         同步互斥的设计与实现
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="8.3.1" data-path="lab7/lab7_3_1_experiment.html">
+            
+                
+                    <a href="../lab7/lab7_3_1_experiment.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.1.</b>
+                        
+                         实验执行流程概述
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="8.3.2" data-path="lab7/lab7_3_2_synchronization_basic_support.html">
+            
+                
+                    <a href="../lab7/lab7_3_2_synchronization_basic_support.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.2.</b>
+                        
+                         同步互斥的底层支撑
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="8.3.3" data-path="lab7/lab7_3_3_semaphore.html">
+            
+                
+                    <a href="../lab7/lab7_3_3_semaphore.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.3.</b>
+                        
+                         信号量
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="8.3.4" data-path="lab7/lab7_3_4_monitors.html">
+            
+                
+                    <a href="../lab7/lab7_3_4_monitors.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.4.</b>
+                        
+                         管程和条件变量
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="8.4" data-path="lab7/lab7_4_lab_requirement.html">
+            
+                
+                    <a href="../lab7/lab7_4_lab_requirement.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                         实验报告要求
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="8.5" data-path="lab7/lab7_5_appendix.html">
+            
+                
+                    <a href="../lab7/lab7_5_appendix.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                         附录
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9" data-path="lab8.html">
+            
+                
+                    <a href="../lab8.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                         Lab 8
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="9.1" data-path="lab8/lab8_1_goals.html">
+            
+                
+                    <a href="../lab8/lab8_1_goals.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                         实验目的
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.2" data-path="lab8/lab8_2_labs.html">
+            
+                
+                    <a href="../lab8/lab8_2_labs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                         实验内容
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="9.2.1" data-path="lab8/lab8_2_1_exercises.html">
+            
+                
+                    <a href="../lab8/lab8_2_1_exercises.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.1.</b>
+                        
+                         练习
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.2.2" data-path="lab8/lab8_2_2_files.html">
+            
+                
+                    <a href="../lab8/lab8_2_2_files.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.2.</b>
+                        
+                         项目组成
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.3" data-path="lab8/lab8_3_fs_design_implement.html">
+            
+                
+                    <a href="../lab8/lab8_3_fs_design_implement.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                         文件系统设计与实现
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="9.3.1" data-path="lab8/lab8_3_1_ucore_fs_introduction.html">
+            
+                
+                    <a href="../lab8/lab8_3_1_ucore_fs_introduction.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.1.</b>
+                        
+                         ucore 文件系统总体介绍
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.3.2" data-path="lab8/lab8_3_2_fs_interface.html">
+            
+                
+                    <a href="../lab8/lab8_3_2_fs_interface.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.2.</b>
+                        
+                         通用文件系统访问接口
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.3.3" data-path="lab8/lab8_3_3_sfs.html">
+            
+                
+                    <a href="../lab8/lab8_3_3_sfs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.3.</b>
+                        
+                         Simple FS 文件系统
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="9.3.3.1" data-path="lab8/lab8_3_3_1_fs_layout.html">
+            
+                
+                    <a href="../lab8/lab8_3_3_1_fs_layout.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.3.1.</b>
+                        
+                         文件系统的布局
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.3.3.2" data-path="lab8/lab8_3_3_2_inode.html">
+            
+                
+                    <a href="../lab8/lab8_3_3_2_inode.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.3.2.</b>
+                        
+                         索引节点
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.3.4" data-path="lab8/lab8_3_4_fs_abstract.html">
+            
+                
+                    <a href="../lab8/lab8_3_4_fs_abstract.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.4.</b>
+                        
+                         文件系统抽象层 - VFS
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="9.3.4.1" data-path="lab8/lab8_3_4_1_file_dir_interface.html">
+            
+                
+                    <a href="../lab8/lab8_3_4_1_file_dir_interface.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.4.1.</b>
+                        
+                         file &amp; dir接口
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.3.4.2" data-path="lab8/lab8_3_4_2_inode_interface.html">
+            
+                
+                    <a href="../lab8/lab8_3_4_2_inode_interface.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.4.2.</b>
+                        
+                         inode 接口 
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.4" data-path="lab8/lab8_3_5_dev_file_io_layer.html">
+            
+                
+                    <a href="../lab8/lab8_3_5_dev_file_io_layer.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                         设备层文件 IO 层
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="9.4.1" data-path="lab8/lab8_3_5_1_data_structure.html">
+            
+                
+                    <a href="../lab8/lab8_3_5_1_data_structure.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.1.</b>
+                        
+                         关键数据结构
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.4.2" data-path="lab8/lab8_3_5_2_stdout_dev_file.html">
+            
+                
+                    <a href="../lab8/lab8_3_5_2_stdout_dev_file.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.2.</b>
+                        
+                         stdout设备文件
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.4.3" data-path="lab8/lab8_3_5_3_stdin_dev_file.html">
+            
+                
+                    <a href="../lab8/lab8_3_5_3_stdin_dev_file.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.3.</b>
+                        
+                         stdin 设备文件
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.5" data-path="lab8/lab8_3_6_labs_steps.html">
+            
+                
+                    <a href="../lab8/lab8_3_6_labs_steps.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                         实验执行流程概述
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.6" data-path="lab8/lab8_3_7_file_op_implement.html">
+            
+                
+                    <a href="../lab8/lab8_3_7_file_op_implement.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                         文件操作实现
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="9.6.1" data-path="lab8/lab8_3_7_1_file_open.html">
+            
+                
+                    <a href="../lab8/lab8_3_7_1_file_open.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.1.</b>
+                        
+                         打开文件
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.6.2" data-path="lab8/lab8_3_7_2_file_read.html">
+            
+                
+                    <a href="../lab8/lab8_3_7_2_file_read.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.2.</b>
+                        
+                         读文件
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.7" data-path="lab8/lab8_4_lab_requirement.html">
+            
+                
+                    <a href="../lab8/lab8_4_lab_requirement.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.7.</b>
+                        
+                         实验报告要求
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Published using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Toggle share dropdown"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">Twitter</button>
+                <button type="button" data-sharing="google-plus" class="button">Google</button>
+                <button type="button" data-sharing="facebook" class="button">Facebook</button>
+                <button type="button" data-sharing="weibo" class="button">Weibo</button>
+                <button type="button" data-sharing="instapaper" class="button">Instapaper</button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >ucore实验指导书和源码网址</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-gitbook_117">
+                    
+                        <h3 id="34-">3.4 系统调用实现</h3>
+<p>系统调用的英文名字是System
+Call。操作系统为什么需要实现系统调用呢？其实这是实现了用户进程后，自然引申出来需要实现的操作系统功能。用户进程只能在操作系统给它圈定好的“用户环境”中执行，但“用户环境”限制了用户进程能够执行的指令，即用户进程只能执行一般的指令，无法执行特权指令。如果用户进程想执行一些需要特权指令的任务，比如通过网卡发网络包等，只能让操作系统来代劳了。于是就需要一种机制来确保用户进程不能执行特权指令，但能够请操作系统“帮忙”完成需要特权指令的任务，这种机制就是系统调用。</p>
+<p>采用系统调用机制为用户进程提供一个获得操作系统服务的统一接口层，这样一来可简化用户进程的实现，把一些共性的、繁琐的、与硬件相关、与特权指令相关的任务放到操作系统层来实现，但提供一个简洁的接口给用户进程调用；二来这层接口事先可规定好，且严格检查用户进程传递进来的参数和操作系统要返回的数据，使得让操作系统给用户进程服务的同时，保护操作系统不会被用户进程破坏。</p>
+<p>从硬件层面上看，需要硬件能够支持在用户态的用户进程通过某种机制切换到内核态。试验一讲述中断硬件支持和软件处理过程其实就可以用来完成系统调用所需的软硬件支持。下面我们来看看如何在ucore中实现系统调用。</p>
+<h4 id="1-">1. 初始化系统调用对应的中断描述符</h4>
+<p>在ucore初始化函数kern_init中调用了idt_init函数来初始化中断描述符表，并设置一个特定中断号的中断门，专门用于用户进程访问系统调用。此事由ide_init函数完成：</p>
+<pre><code>void
+idt_init(void) {
+    extern uintptr_t __vectors[];
+    int i;
+    for (i = 0; i &lt; sizeof(idt) / sizeof(struct gatedesc); i ++) {
+        SETGATE(idt[i], 1, GD_KTEXT, __vectors[i], DPL_KERNEL);
+    }
+    SETGATE(idt[T_SYSCALL], 1, GD_KTEXT, __vectors[T_SYSCALL], DPL_USER);
+    lidt(&amp;idt_pd);
+}
+</code></pre><p>在上述代码中，可以看到在执行加载中断描述符表lidt指令前，专门设置了一个特殊的中断描述符idt[T_SYSCALL]，它的特权级设置为DPL_USER，中断向量处理地址在__vectors[T_SYSCALL]处。这样建立好这个中断描述符后，一旦用户进程执行“INT T_SYSCALL”后，由于此中断允许用户态进程产生（注意它的特权级设置为DPL_USER），所以CPU就会从用户态切换到内核态，保存相关寄存器，并跳转到__vectors[T_SYSCALL]处开始执行，形成如下执行路径：</p>
+<pre><code>vector128(vectors.S)--\&gt;
+\_\_alltraps(trapentry.S)--\&gt;trap(trap.c)--\&gt;trap\_dispatch(trap.c)----\&gt;syscall(syscall.c)-
+</code></pre><p>在syscall中，根据系统调用号来完成不同的系统调用服务。</p>
+<h4 id="2-">2. 建立系统调用的用户库准备</h4>
+<p>在操作系统中初始化好系统调用相关的中断描述符、中断处理起始地址等后，还需在用户态的应用程序中初始化好相关工作，简化应用程序访问系统调用的复杂性。为此在用户态建立了一个中间层，即简化的libc实现，在user/libs/ulib.[ch]和user/libs/syscall.[ch]中完成了对访问系统调用的封装。用户态最终的访问系统调用函数是syscall，实现如下：</p>
+<pre><code>static inline int
+syscall(int num, ...) {
+    va_list ap;
+    va_start(ap, num);
+    uint32_t a[MAX_ARGS];
+    int i, ret;
+    for (i = 0; i &lt; MAX_ARGS; i ++) {
+        a[i] = va_arg(ap, uint32_t);
+    }
+    va_end(ap);
+
+    asm volatile (
+        &quot;int %1;&quot;
+        : &quot;=a&quot; (ret)
+        : &quot;i&quot; (T_SYSCALL),
+          &quot;a&quot; (num),
+          &quot;d&quot; (a[0]),
+          &quot;c&quot; (a[1]),
+          &quot;b&quot; (a[2]),
+          &quot;D&quot; (a[3]),
+          &quot;S&quot; (a[4])
+        : &quot;cc&quot;, &quot;memory&quot;);
+    return ret;
+}
+</code></pre><p>从中可以看出，应用程序调用的exit/fork/wait/getpid等库函数最终都会调用syscall函数，只是调用的参数不同而已，如果看最终的汇编代码会更清楚：</p>
+<pre><code>……
+  34:    8b 55 d4               mov    -0x2c(%ebp),%edx
+  37:    8b 4d d8               mov    -0x28(%ebp),%ecx
+  3a:    8b 5d dc                mov    -0x24(%ebp),%ebx
+  3d:    8b 7d e0                mov    -0x20(%ebp),%edi
+  40:    8b 75 e4                mov    -0x1c(%ebp),%esi
+  43:    8b 45 08               mov    0x8(%ebp),%eax
+  46:    cd 80                   int    $0x80
+48: 89 45 f0                mov    %eax,-0x10(%ebp)
+……
+</code></pre><p>可以看到其实是把系统调用号放到EAX，其他5个参数a[0]~a[4]分别保存到EDX/ECX/EBX/EDI/ESI五个寄存器中，及最多用6个寄存器来传递系统调用的参数，且系统调用的返回结果是EAX。比如对于getpid库函数而言，系统调用号（SYS_getpid=18）是保存在EAX中，返回值（调用此库函数的的当前进程号pid）也在EAX中。</p>
+<h4 id="3-">3. 与用户进程相关的系统调用</h4>
+<p>在本实验中，与进程相关的各个系统调用属性如下所示：</p>
+<table>
+<tr><td>系统调用名</td><td>含义</td><td>具体完成服务的函数</td></tr>
+<tr><td>SYS_exit</td><td>process exit</td><td>do_exit</td></tr>
+<tr><td>SYS_fork</td><td>create child process, dup mm </td><td>do_fork--&gt;wakeup_proc</td></tr>
+<tr><td>SYS_wait</td><td>wait child process</td><td>do_wait</td></tr>
+<tr><td>SYS_exec</td><td>after fork, process execute a new program</td><td>load a program and refresh the mm</td></tr>
+<tr><td>SYS_yield</td><td>process flag itself need resecheduling</td><td>proc-&gt;need_sched=1, then scheduler will rescheule this process</td></tr>
+<tr><td>SYS_kill</td><td>kill process</td><td>do_kill--&gt;proc-&gt;flags |= PF_EXITING,                                                        --&gt;wakeup_proc--&gt;do_wait--&gt;do_exit</td></tr>
+<tr><td>SYS_getpid</td><td>get the process&#39;s pid</td><td> </td></tr>
+</table>
+
+<p>通过这些系统调用，可方便地完成从进程/线程创建到退出的整个运行过程。</p>
+<h4 id="4-">4. 系统调用的执行过程</h4>
+<p>与用户态的函数库调用执行过程相比，系统调用执行过程的有四点主要的不同：</p>
+<ul>
+<li>不是通过“CALL”指令而是通过“INT”指令发起调用；</li>
+<li>不是通过“RET”指令，而是通过“IRET”指令完成调用返回；</li>
+<li>当到达内核态后，操作系统需要严格检查系统调用传递的参数，确保不破坏整个系统的安全性；</li>
+<li>执行系统调用可导致进程等待某事件发生，从而可引起进程切换；</li>
+</ul>
+<p>下面我们以getpid系统调用的执行过程大致看看操作系统是如何完成整个执行过程的。当用户进程调用getpid函数，最终执行到“INT T_SYSCALL”指令后，CPU根据操作系统建立的系统调用中断描述符，转入内核态，并跳转到vector128处（kern/trap/vectors.S），开始了操作系统的系统调用执行过程，函数调用和返回操作的关系如下所示：</p>
+<pre><code>vector128(vectors.S)--\&gt;
+\_\_alltraps(trapentry.S)--\&gt;trap(trap.c)--\&gt;trap\_dispatch(trap.c)--
+--\&gt;syscall(syscall.c)--\&gt;sys\_getpid(syscall.c)--\&gt;……--\&gt;\_\_trapret(trapentry.S)
+</code></pre><p>在执行trap函数前，软件还需进一步保存执行系统调用前的执行现场，即把与用户进程继续执行所需的相关寄存器等当前内容保存到当前进程的中断帧trapframe中（注意，在创建进程是，把进程的trapframe放在给进程的内核栈分配的空间的顶部）。软件做的工作在vector128和__alltraps的起始部分：</p>
+<pre><code>vectors.S::vector128起始处:
+  pushl $0
+  pushl $128
+......
+trapentry.S::__alltraps起始处:
+pushl %ds
+  pushl %es
+  pushal
+……
+</code></pre><p>自此，用于保存用户态的用户进程执行现场的trapframe的内容填写完毕，操作系统可开始完成具体的系统调用服务。在sys_getpid函数中，简单地把当前进程的pid成员变量做为函数返回值就是一个具体的系统调用服务。完成服务后，操作系统按调用关系的路径原路返回到__alltraps中。然后操作系统开始根据当前进程的中断帧内容做恢复执行现场操作。其实就是把trapframe的一部分内容保存到寄存器内容。恢复寄存器内容结束后，调整内核堆栈指针到中断帧的tf_eip处，这是内核栈的结构如下：</p>
+<pre><code>/* below here defined by x86 hardware */
+    uintptr_t tf_eip;
+    uint16_t tf_cs;
+    uint16_t tf_padding3;
+    uint32_t tf_eflags;
+/* below here only when crossing rings */
+    uintptr_t tf_esp;
+    uint16_t tf_ss;
+    uint16_t tf_padding4;
+</code></pre><p>这时执行“IRET”指令后，CPU根据内核栈的情况回复到用户态，并把EIP指向tf_eip的值，即“INT T_SYSCALL”后的那条指令。这样整个系统调用就执行完毕了。</p>
+<p>至此，实验五中的主要工作描述完毕。</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../lab5/lab5_3_3_process_exit_wait.html" class="navigation navigation-prev " aria-label="Previous page: 进程退出和等待进程"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../lab5/lab5_4_lab_requirement.html" class="navigation navigation-next " aria-label="Next page: 实验报告要求"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="https://cdn.mathjax.org/mathjax/2.4-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"autocover":{"title":"ucore lab guide","author":"Chen, Yu","font":{"size":null,"family":"Impact","color":"#FFF"},"size":{"w":1800,"h":2360},"background":{"color":"#09F"}}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
