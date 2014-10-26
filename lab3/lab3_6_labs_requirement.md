@@ -1,14 +1,14 @@
 
 ## 6. 实验报告要求
 
-从网站上下载lab3.zip后，解压得到本文档和代码目录 lab3，完成实验中的各个练习。完成代码编写并检查无误后，在对应目录下执行 make handin 任务，即会自动生成 lab3-handin.tar.gz。最后请一定提前或按时提交到网络学堂上。
+从网站上下载lab3后，解压得到本文档和代码目录 lab3，完成实验中的各个练习。完成代码编写并检查无误后，在对应目录下执行 make handin 任务，即会自动生成 lab3-handin.tar.gz。
 
-注意有“LAB3”的注释，代码中所有需要完成的地方（challenge除外）都有“LAB3”和“YOUR CODE”的注释，请在提交时特别注意保持注释，并将“YOUR CODE”替换为自己的学号，并且将所有标有对应注释的部分填上正确的代码。所有扩展实验的加分总和不超过10分。
+注意有“LAB3”的注释，代码中所有需要完成的地方（challenge除外）都有“LAB3”和“YOUR CODE”的注释，请在提交时特别注意保持注释，并将“YOUR CODE”替换为自己的学号，并且将所有标有对应注释的部分填上正确的代码。
 
 附录：正确输出的参考：   
 
 ```
-yuchen@yuchen-PAI4:~/oscourse/2012spring/lab3_figs/lab3-code-2012$ make qemu
+$ make qemu
 (THU.CST) os is loading ...
 Special kernel symbols:
 entry 0xc010002c (phys)
