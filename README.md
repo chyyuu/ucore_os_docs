@@ -1,7 +1,7 @@
 # ucore实验指导书和源码网址
 
-- [ucore实验指导书](http://objectkuan.gitbooks.io/ucore-docs/)
-- [ucore labs 1-8 源码和参考答案 ](https://github.com/chyyuu/mooc_os_lab)
+- [ucore实验指导书](http://hejq.me/ucore_docs/)
+- [ucore labs 1-8 源码和参考答案 ](https://github.com/chyyuu/ucore_lab)
 
 # 注意
 - 如果您有好的建议，或发现书中的错误等，请通过email告诉我们。非常感谢！
