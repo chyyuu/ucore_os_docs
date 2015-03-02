@@ -7,12 +7,10 @@
 
 实验中可能会用到的命令例如：
 
-	configure --target-list="i386-softmmu"	# 配置qemu，可模拟X86-32硬件环境
-	make					# 编译qemu
-	sudo make install		# 安装qemu
+	configure --target-list="i386-softmmu"  # 配置qemu，可模拟X86-32硬件环境
+	make                                    # 编译qemu
+	sudo make install                       # 安装qemu
 
-注意：版本小于0.10.0的qemu 仅支持 gcc-3.x 版本编译器。但0.10.x以上版本的qemu已经支持用gcc-4.x编译器了。
- 
 qemu执行程序将缺省安装到 /usr/local/bin 目录下。
  
 如果使用的是默认的安装路径，那么在 “/usr/local/bin” 下面即可看到安装结果：

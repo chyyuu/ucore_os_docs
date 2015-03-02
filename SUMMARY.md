@@ -9,7 +9,7 @@
       * [开发OS实验的简单步骤](lab0/lab0_2_2_1_lab_steps.md)
       * [通过虚拟机使用Linux实验环境（推荐：最容易的实验环境安装方法）](lab0/lab0_2_2_2_vm_experiment.md)
       * [安装使用Linux实验环境（适合希望自己安装Linux系统的同学）](lab0/lab0_2_2_3_install.md)
-        * [实验中可能使用的软件](lab0/lab0_2_2_3_1_softwares.md)
+      * [实验中可能使用的软件](lab0/lab0_2_2_3_1_softwares.md)
     * [了解编程开发调试的基本工具](lab0/lab0_2_3_tools.md)
       * [gcc的基本用法](lab0/lab0_2_3_1_gcc_usage.md)
         * [编译简单的 C 程序](lab0/lab0_2_3_1_1_compile_c_prog.md)

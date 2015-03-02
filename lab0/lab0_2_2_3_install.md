@@ -1,15 +1,8 @@
 
 #### 2.2.3 安装使用Linux实验环境（适合希望自己安装Linux系统的同学）
 
-这里我们主要以Ubuntu Linux 12.04（32 bit）作为整个实验的系统软件环境。首先我们需要安装Ubuntu Linux 12.04。
+这里我们主要以Ubuntu Linux 14.04（64 bit）作为整个实验的系统软件环境。首先我们需要安装Ubuntu Linux 14.04。
 
-**WUBI方式安装（最容易的Linux安装方法）**
-WUBI是一个专门针对Windows用户的UBUNTU Linux安装工具，你需要做的只是点击几下鼠标而已。不需要改变分区设置，不需要启动文件，不需要Live CD。WUBI让你如同Windows操作系统里的其他软件一样安装卸载Ubuntu，如果你从来没有安装过UBUNTU Linux，Wubi很适合你第一次安装UBUNTU Linux。具体方法如下：
-
-1. 去OS course ftp或官方网站http://releases.ubuntu.com/12.04/ubuntu-12.04-desktop-i386.iso下载了一个ubuntu-12.04-desktop-i386的ISO文件。
-2. 通过winrar等工具将下载来的ISO文件中的wubi.exe解压出来，放在任意一个分区的根目录下。这里推荐预留了一个至少大小为８G的NTFS分区，单击wubi.exe安装文件，这时会弹出对话框。
-3. 设置好分区将要安装的分区，语言，分配的系统大小，用户名和密码（务必记住）之后，点击“安装”，这时如果你的机器已经联网了，会自动从镜像网站上下载ISO文件。这里采用绕过wubi下载镜像ISO的方法安装ubuntu 12.04，会节省大量时间。避免下载ISO文件的这一步非常关键。在进行这一步之前请将网线断开，然后将提前下载来的ubuntu-12.04-desktop-i386.iso文件拷贝至wubi所创建的ubuntu目录下的install文件夹中，重新运行wubi.exe。这次再也不会提示下载ISO文件了。几秒钟后，wubi就会提示你重新启动系统。注意，此时ubuntu并没有安装在硬盘上，必须重新启动才开始进行ubuntu 12.04的安装。
-4. 点击”完成”按钮，选择重启计算机。计算机重启后，在启动选项中选择ubuntu，出现”press 'ESC' to … ” 时，不用理会，这时我们熟悉的ubuntu 滚动条出现在屏幕上。此时，才正式开始安装ubuntu 12.04至硬盘分区某一目录下。接下来我们什么也不用做，只需等待。当提示正式安装完成后，重新启动计算机系统，可以发现在启动选项中有"ubuntu"和“windows”。你可以根据你的情况进行选择。
 
 **使用Linux**
 在实验过程中，我们需要了解基于命令行方式的编译、调试、运行操作系统的实验方法。为此，需要了解基本的Linux命令行使用。
@@ -261,13 +254,13 @@ Ubuntu 下可以使用 apt-get 命令，apt-get 是一条 Linux 命令行命令�
 		显示软件包 <package> 的完整描述。
 例如：
 
-	chy@chyhome-PC:~$apt-cache gcc
-	gcc-4.6 - The GNU C compiler
-	gcc-4.6-base - The GNU Compiler Collection (base package)
-	gcc-4.6-doc - Documentation for the GNU compilers (gcc, gobjc, g++)
-	gcc-4.6-multilib - The GNU C compiler (multilib files)
-	gcc-4.6-source - Source of the GNU Compiler Collection
-	gcc-4.6-locales - The GNU C compiler (native language support files)
+	chy@chyhome-PC:~$apt-cache search gcc
+	gcc-4.8 - The GNU C compiler
+	gcc-4.8-base - The GNU Compiler Collection (base package)
+	gcc-4.8-doc - Documentation for the GNU compilers (gcc, gobjc, g++)
+	gcc-4.8-multilib - The GNU C compiler (multilib files)
+	gcc-4.8-source - Source of the GNU Compiler Collection
+	gcc-4.8-locales - The GNU C compiler (native language support files)
 	chy@chyhome-PC:~$
 (2) 图形界面软件包获取
 新立得软件包管理器，是 Ubuntu 下面管理软件包得图形界面程序，相当于命令行中得 apt 命令。进入方法可以是 

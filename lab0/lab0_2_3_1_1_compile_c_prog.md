@@ -1,7 +1,7 @@
 
 ###### 2.3.1.1 编译简单的 C 程序
 
-C 语言经典的入门例子是 Hello World，下面是一示例代码：   
+C 语言经典的入门例子是 Hello World，下面是一示例代码： 
 
 	#include <stdio.h>
 	int
