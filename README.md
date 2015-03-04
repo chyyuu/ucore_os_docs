@@ -1,6 +1,6 @@
 # ucore实验指导书和源码网址
 
-- [ucore实验指导书](http://hejq.me/ucore_docs/)
+- [ucore实验指导书](http://objectkuan.gitbooks.io/ucore-docs/)
 - [ucore labs 1-8 源码和参考答案 ](https://github.com/chyyuu/ucore_lab)
 
 # 注意
