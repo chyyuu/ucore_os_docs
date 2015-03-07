@@ -2,7 +2,7 @@
 
 **练习0：填写已有实验**
 
-本实验依赖实验1。请把你做的实验1的代码填入本实验中代码中有“LAB1”的注释相应部分。提示：可采用merge工具，比如kdiff3，eclipse中的diff/merge工具，understand中的diff/merge工具等。
+本实验依赖实验1。请把你做的实验1的代码填入本实验中代码中有“LAB1”的注释相应部分。提示：可采用diff和patch工具进行半自动的合并（merge），也可用一些图形化的比较/merge工具来手动合并，比如meld，eclipse中的diff/merge工具，understand中的diff/merge工具等。
 
 **练习1：实现 first-fit 连续物理内存分配算法（需要编程）**
 
@@ -27,7 +27,22 @@ kern/mm/pmm.c中的page\_remove\_pte函数。page\_remove\_pte函数的调用关
 ![](../lab2_figs/image002.png)
 图2 page\_remove\_pte函数的调用关系图
 
+**练习4：完成实验报告 **
+
+ - 列出本实验对应的原理部分的基本概念，并说明本实验中的实现部分如何对应和体现了原理中的基本概念和关键知识点。
+ - 在实验报告中回答后续文档中提出的问题。
+
+
+**扩展练习Challenge：buddy system（伙伴系统）分配算法（需要编程）**
+
+Buddy System算法把系统中的可用存储空间划分为存储块(Block)来进行管理, 每个存储块的大小必须是2的n次幂(Pow(2, n)), 即1, 2, 4, 8, 16, 32, 64, 128...
+
+ -  参考[伙伴分配器的一个极简实现](http://coolshell.cn/articles/10427.html)， 在ucore中实现buddy system分配算法，要求有比较充分的测试用例说明实现的正确性，需要有设计文档。
+ 
 **扩展练习Challenge：任意大小的内存单元slub分配算法（需要编程）**
 
-如果觉得上诉练习难度不够，可考虑完成此扩展练习。实现两层架构的高效内存单元分配，第一层是基于页大小的内存分配，第二层是在第一层基础上实现基于任意大小的内存分配。比如，如果连续分配8个16字节的内存块，当分配完毕后，实际只消耗了一个空闲物理页。要求时空都高效，可参考slub算法来实现，可简化实现，能够体现其主体思想即可。要求有设计文档。slub相关网页在[http://www.ibm.com/developerworks/cn/linux/l-cn-slub/](http://www.ibm.com/developerworks/cn/linux/l-cn-slub/)
-。完成challenge的同学可单独提交challenge。完成得好的同学可获得最终考试成绩的加分。
+slub算法，实现两层架构的高效内存单元分配，第一层是基于页大小的内存分配，第二层是在第一层基础上实现基于任意大小的内存分配。可简化实现，能够体现其主体思想即可。
+
+ - 参考[linux的slub分配算法/](http://www.ibm.com/developerworks/cn/linux/l-cn-slub/)，在ucore中实现slub分配算法。要求有比较充分的测试用例说明实现的正确性，需要有设计文档。
+
+> Challenges是选做，做一个就很好了。完成Challenge的同学可单独提交Challenge。完成得好的同学可获得最终考试成绩的加分。

@@ -28,8 +28,12 @@
 # 上述工具的使用方法在线信息
 - apt-get
   - http://wiki.ubuntu.org.cn/Apt-get%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97
-- git
+- git github
   - http://www.cnblogs.com/cspku/articles/Git_cmds.html
+  - http://www.worldhello.net/gotgithub/index.html
+- diff patch
+  - http://www.ibm.com/developerworks/cn/linux/l-diffp/index.html
+  - http://www.cnblogs.com/itech/archive/2009/08/19/1549729.html  
 - gcc
   - http://wiki.ubuntu.org.cn/Gcchowto
   - http://wiki.ubuntu.org.cn/Compiling_Cpp
