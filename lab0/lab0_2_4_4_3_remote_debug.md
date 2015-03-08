@@ -7,13 +7,13 @@
 
 然后输入c（也就是continue）命令之后，qemu会继续执行下去，但是gdb由于不知道任何符号信息，并且也没有下断点，是不能进行源码级的调试的。为了让gdb获知符号信息，需要指定调试目标文件，gdb中使用file命令：
 
-	(gdb)  file obj/kernel/kernel.elf
+	(gdb)  file ./bin/kernel
 
 之后gdb就会载入这个文件中的符号信息了。
 
 通过gdb可以对ucore代码进行调试，以lab1中调试memset函数为例：
 
-(1)  运行 qemu -S -s -hda ucore.img -monitor stdio
+(1)  运行 `qemu -S -s -hda ./bin/ucore.img -monitor stdio`
 
 (2)  运行 gdb并与qemu进行连接
 
@@ -27,7 +27,7 @@
 <tr><td>窗口一</td><td>窗口二</td>
 <tr>
 <td>
-chy@laptop: ~/lab1$ qemu -S -hda ./bin/ucore.img  -s
+chy@laptop: ~/lab1$ qemu -S  -s -hda ./bin/ucore.img 
 </td>
 <td>
 chy@laptop: ~/lab1$ gdb ./bin/kernel<br>
