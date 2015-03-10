@@ -66,3 +66,94 @@ make qemu
 ```
 
 则可以得到如附录所示的显示内容（仅供参考，不是标准答案输出）
+
+```
+$ make qemu
+(THU.CST) os is loading ...
+
+Special kernel symbols:
+  entry  0xc010002a (phys)
+  etext  0xc01081c3 (phys)
+  edata  0xc011fac8 (phys)
+  end    0xc0120cf0 (phys)
+Kernel executable memory footprint: 132KB
+ebp:0xc011ef48 eip:0xc0100a51 args:0x00010094 0x00000000 0xc011ef78 0xc01000b8 
+    kern/debug/kdebug.c:308: print_stackframe+21
+ebp:0xc011ef58 eip:0xc0100d4f args:0x00000000 0x00000000 0x00000000 0xc011efc8 
+    kern/debug/kmonitor.c:129: mon_backtrace+10
+ebp:0xc011ef78 eip:0xc01000b8 args:0x00000000 0xc011efa0 0xffff0000 0xc011efa4 
+    kern/init/init.c:56: grade_backtrace2+19
+ebp:0xc011ef98 eip:0xc01000d9 args:0x00000000 0xffff0000 0xc011efc4 0x0000002a 
+    kern/init/init.c:61: grade_backtrace1+27
+ebp:0xc011efb8 eip:0xc01000f5 args:0x00000000 0xc010002a 0xffff0000 0xc010006d 
+    kern/init/init.c:66: grade_backtrace0+19
+ebp:0xc011efd8 eip:0xc0100115 args:0x00000000 0x00000000 0x00000000 0xc0108200 
+    kern/init/init.c:71: grade_backtrace+26
+ebp:0xc011eff8 eip:0xc010007a args:0x00000000 0x00000000 0x0000ffff 0x40cf9a00 
+    kern/init/init.c:31: kern_init+79
+memory management: default_pmm_manager
+e820map:
+  memory: 0009fc00, [00000000, 0009fbff], type = 1.
+  memory: 00000400, [0009fc00, 0009ffff], type = 2.
+  memory: 00010000, [000f0000, 000fffff], type = 2.
+  memory: 07ee0000, [00100000, 07fdffff], type = 1.
+  memory: 00020000, [07fe0000, 07ffffff], type = 2.
+  memory: 00040000, [fffc0000, ffffffff], type = 2.
+check_alloc_page() succeeded!
+check_pgdir() succeeded!
+check_boot_pgdir() succeeded!
+-------------------- BEGIN --------------------
+PDE(0e0) c0000000-f8000000 38000000 urw
+  |-- PTE(38000) c0000000-f8000000 38000000 -rw
+PDE(001) fac00000-fb000000 00400000 -rw
+  |-- PTE(000e0) faf00000-fafe0000 000e0000 urw
+  |-- PTE(00001) fafeb000-fafec000 00001000 -rw
+--------------------- END ---------------------
+check_vma_struct() succeeded!
+page fault at 0x00000100: K/W [no page found].
+check_pgfault() succeeded!
+check_vmm() succeeded.
+ide 0:      10000(sectors), 'QEMU HARDDISK'.
+ide 1:     262144(sectors), 'QEMU HARDDISK'.
+SWAP: manager = fifo swap manager
+BEGIN check_swap: count 31966, total 31966
+setup Page Table for vaddr 0X1000, so alloc a page
+setup Page Table vaddr 0~4MB OVER!
+set up init env for check_swap begin!
+page fault at 0x00001000: K/W [no page found].
+page fault at 0x00002000: K/W [no page found].
+page fault at 0x00003000: K/W [no page found].
+page fault at 0x00004000: K/W [no page found].
+set up init env for check_swap over!
+write Virt Page c in fifo_check_swap
+write Virt Page a in fifo_check_swap
+write Virt Page d in fifo_check_swap
+write Virt Page b in fifo_check_swap
+write Virt Page e in fifo_check_swap
+page fault at 0x00005000: K/W [no page found].
+swap_out: i 0, store page in vaddr 0x1000 to disk swap entry 2
+write Virt Page b in fifo_check_swap
+write Virt Page a in fifo_check_swap
+page fault at 0x00001000: K/W [no page found].
+swap_out: i 0, store page in vaddr 0x2000 to disk swap entry 3
+swap_in: load disk swap entry 2 with swap_page in vadr 0x1000
+write Virt Page b in fifo_check_swap
+page fault at 0x00002000: K/W [no page found].
+swap_out: i 0, store page in vaddr 0x3000 to disk swap entry 4
+swap_in: load disk swap entry 3 with swap_page in vadr 0x2000
+write Virt Page c in fifo_check_swap
+page fault at 0x00003000: K/W [no page found].
+swap_out: i 0, store page in vaddr 0x4000 to disk swap entry 5
+swap_in: load disk swap entry 4 with swap_page in vadr 0x3000
+write Virt Page d in fifo_check_swap
+page fault at 0x00004000: K/W [no page found].
+swap_out: i 0, store page in vaddr 0x5000 to disk swap entry 6
+swap_in: load disk swap entry 5 with swap_page in vadr 0x4000
+count is 7, total is 7
+check_swap() succeeded!
+++ setup timer interrupts
+100 ticks
+100 ticks
+100 ticks
+100 ticks
+```

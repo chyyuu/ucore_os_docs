@@ -114,6 +114,56 @@ lab1的整体目录结构如下所示：
 编译方法
 
 首先下载lab1.tar.bz2，然后解压lab1.tar.bz2。在lab1目录下执行make，可以生成ucore.img（生成于bin目录下）。ucore.img是一个包含了bootloader或OS的硬盘镜像，通过执行如下命令可在硬件虚拟环境 qemu中运行bootloader或OS：
-
+```
 	$ make qemu
-    
+```
+   
+ 则可以得到如下显示界面（仅供参考）
+ ```
+ (THU.CST) os is loading ...
+
+Special kernel symbols:
+  entry  0x00100000 (phys)
+  etext  0x00103468 (phys)
+  edata  0x0010ea18 (phys)
+  end    0x0010fd80 (phys)
+Kernel executable memory footprint: 64KB
+ebp:0x00007b38 eip:0x00100a55 args:0x00010094 0x00010094 0x00007b68 0x00100084 
+    kern/debug/kdebug.c:305: print_stackframe+21
+ebp:0x00007b48 eip:0x00100d3a args:0x00000000 0x00000000 0x00000000 0x00007bb8 
+    kern/debug/kmonitor.c:125: mon_backtrace+10
+ebp:0x00007b68 eip:0x00100084 args:0x00000000 0x00007b90 0xffff0000 0x00007b94 
+    kern/init/init.c:48: grade_backtrace2+19
+ebp:0x00007b88 eip:0x001000a5 args:0x00000000 0xffff0000 0x00007bb4 0x00000029 
+    kern/init/init.c:53: grade_backtrace1+27
+ebp:0x00007ba8 eip:0x001000c1 args:0x00000000 0x00100000 0xffff0000 0x00100043 
+    kern/init/init.c:58: grade_backtrace0+19
+ebp:0x00007bc8 eip:0x001000e1 args:0x00000000 0x00000000 0x00000000 0x00103480 
+    kern/init/init.c:63: grade_backtrace+26
+ebp:0x00007be8 eip:0x00100050 args:0x00000000 0x00000000 0x00000000 0x00007c4f 
+    kern/init/init.c:28: kern_init+79
+ebp:0x00007bf8 eip:0x00007d61 args:0xc031fcfa 0xc08ed88e 0x64e4d08e 0xfa7502a8 
+    <unknow>: -- 0x00007d60 --
+++ setup timer interrupts
+0: @ring 0
+0:  cs = 8
+0:  ds = 10
+0:  es = 10
+0:  ss = 10
++++ switch to  user  mode +++
+1: @ring 3
+1:  cs = 1b
+1:  ds = 23
+1:  es = 23
+1:  ss = 23
++++ switch to kernel mode +++
+2: @ring 0
+2:  cs = 8
+2:  ds = 10
+2:  es = 10
+2:  ss = 10
+100 ticks
+100 ticks
+100 ticks
+100 ticks
+ ```   
