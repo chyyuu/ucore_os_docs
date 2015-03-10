@@ -12,7 +12,7 @@
     - vim: Linux/unix中的传统编辑器，类似有emacs等，可通过exuberant-ctags、cscope等实现代码定位
   - 源码比较工具：diff、meld，用于比较不同目录或不同文件的区别
     - diff是命令行工具，使用简单
-    -  meld是图形界面的工具，功能相对直观和方便，类似的工具还有 kdiff3、diffmerge、P4merge
+    - meld是图形界面的工具，功能相对直观和方便，类似的工具还有 kdiff3、diffmerge、P4merge
   - 开发编译调试工具：gcc 、gdb 、make
     - gcc：C语言编译器
     - gdb：执行程序调试器
@@ -23,6 +23,9 @@
     - make：软件工程管理工具， make命令执行时，需要一个 makefile 文件，以告诉make命令如何去编译和链接程序
     - dd：读写数据到文件和设备中的工具
   - 硬件模拟器：qemu -- qemu可模拟多种CPU硬件环境，本实验中，用于模拟一台 intel x86-32的计算机系统。类似的工具还有BOCHS, SkyEye等
+  - markdown文本格式的编写和阅读工具(比如阅读ucore_docs)
+    - 编写工具 haroopad 
+    - 阅读工具 gitbook
 
 
 # 上述工具的使用方法在线信息
@@ -58,3 +61,7 @@
    - http://wenku.baidu.com/view/04c0116aa45177232f60a2eb.html
 - Eclipse-CDT
    - http://blog.csdn.net/anzhu_111/article/details/5946634  
+- haroopad
+   - http://pad.haroopress.com/
+- gitbook
+   - https://github.com/GitbookIO/gitbook  https://www.gitbook.com/
