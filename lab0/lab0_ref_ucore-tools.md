@@ -10,8 +10,8 @@
     - Understand：商业软件、跨平台、丰富的分析理解代码的功能，Windows上有类似的sourceinsight软件
     - gedit：Linux中的常用文本编辑，Windows上有类似的notepad
     - vim: Linux/unix中的传统编辑器，类似有emacs等，可通过exuberant-ctags、cscope等实现代码定位
-  - 源码比较工具：diff、meld，用于比较不同目录或不同文件的区别
-    - diff是命令行工具，使用简单
+  - 源码比较和打补丁工具：diff、meld，用于比较不同目录或不同文件的区别, patch是打补丁工具
+    - diff, patch是命令行工具，使用简单
     - meld是图形界面的工具，功能相对直观和方便，类似的工具还有 kdiff3、diffmerge、P4merge
   - 开发编译调试工具：gcc 、gdb 、make
     - gcc：C语言编译器
