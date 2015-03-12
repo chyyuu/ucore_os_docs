@@ -1,4 +1,4 @@
-# ucore OS实验指导书和源码网址 (2015)
+# uCore OS实验指导书和源码网址 (2015)
 
 - [ucore实验指导书](http://objectkuan.gitbooks.io/ucore-docs/)
 - [ucore labs 1-8 源码和参考答案 ](https://github.com/chyyuu/ucore_lab)
