@@ -14,6 +14,7 @@
 ### x86 Assembly Language
 - [Intel 80386 Programmer's Reference Manual, 1987 (HTML).](http://www.logix.cz/michal/doc/i386/)
 - [Linux 汇编语言开发指南](http://www.ibm.com/developerworks/cn/linux/l-assembly/index.html)
+- [汇编语言程序设计](http://item.jd.com/10057711.html) 布鲁姆 著, 马朝晖 等译,机械工业出版社,2005
 
 ### Multiprocessor references:
  - [MP specification](http://pdos.csail.mit.edu/6.828/2014/readings/ia32/MPspec.pdf)
