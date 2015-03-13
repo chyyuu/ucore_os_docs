@@ -8,6 +8,12 @@
 - [The Evolution of the Unix Time-sharing System](http://www.read.seas.harvard.edu/~kohler/class/aosref/ritchie84evolution.pdf), Dennis M. Ritchie, 1979.
 - The C programming language (second edition) by Kernighan and Ritchie. Prentice Hall, Inc., 1988. ISBN 0-13-110362-8, 1998.
 
+### build OS
+ - [How to make an Operating System](https://www.gitbook.com/book/samypesse/how-to-create-an-operating-system/details)
+ - [xv6 book 中文](https://www.gitbook.com/book/th0ar/xv6-chinese/details)
+ - [自己动手写操作系统](http://item.jd.com/10142246.html)于渊 著,电子工业出版社,2005
+ - 
+
 ### x86 Emulation
 - [QEMU user manual](http://wiki.qemu.org/Qemu-doc.html)
 
