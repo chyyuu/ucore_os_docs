@@ -20,6 +20,7 @@
  - [IO APIC](http://pdos.csail.mit.edu/6.828/2014/readings/ia32/ioapic.pdf)
  
 ### x86系统结构与编程
+ - [微型计算机技术及应用（第4版）](http://product.dangdang.com/22915697.html#catalog) 戴梅萼，史嘉权　编著, 清华大学出版社, 2008
  - [x86/x64体系探索及编程](http://item.jd.com/11100249.html) 邓志 著，电子工业出版社，2012
  - [x86汇编语言：从实模式到保护模式](http://item.jd.com/11179005.html) 李忠，王晓波，余洁 著，电子工业出版社，2013
 
