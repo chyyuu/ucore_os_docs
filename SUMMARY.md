@@ -45,6 +45,7 @@
       * [通用数据结构双向循环链表](lab0/lab0_2_6_2_generic_data_structure.md)
         * [双向循环链表](lab0/lab0_2_6_2_1_linked_list.md)
   * [附录A.ucore实验中的常用工具](lab0/lab0_ref_ucore-tools.md)
+  * [附录B.ucore实验参考资料](lab0/lab0_ref_ucore-resource.md)
 * [Lab 1](lab1.md)
   * [实验目的](lab1/lab1_1_goals.md)
   * [实验内容](lab1/lab1_2_labs.md)
