@@ -28,7 +28,7 @@
       * [使用硬件模拟器QEMU](lab0/lab0_2_4_2_qemu_usage.md)
         * [运行参数](lab0/lab0_2_4_2_1_qemu_runtime_arguments.md)
         * [常用调试命令](lab0/lab0_2_4_2_2_qemu_monitor_debug.md)
-#      * [基于qemu内建模式调试ucore](lab0/lab0_2_4_3_qemu_debug_ucore.md)
+      * [基于qemu内建模式调试ucore]
       * [结合gdb和qemu源码级调试ucore](lab0/lab0_2_4_4_gdb_qemu_debug_ucore.md)
         * [编译可调试的目标文件](lab0/lab0_2_4_4_1_make_obj.md)
         * [ucore 代码编译](lab0/lab0_2_4_4_2_ucore_make.md)
