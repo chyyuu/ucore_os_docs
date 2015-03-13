@@ -2,7 +2,7 @@
 
 > 一些资料信息来源于 http://pdos.csail.mit.edu/6.828/2014/reference.html
 
-
+### UNIX general info
 - [Youtube Unix intro](https://www.youtube.com/watch?v=tc4ROCJYbm0)
 - [The UNIX Time-Sharing System](http://citeseer.ist.psu.edu/10962.html), Dennis M. Ritchie and Ken L.Thompson,. Bell System Technical Journal 57, number 6, part 2 (July-August 1978) pages 1905-1930. 
 - [The Evolution of the Unix Time-sharing System](http://www.read.seas.harvard.edu/~kohler/class/aosref/ritchie84evolution.pdf), Dennis M. Ritchie, 1979.
@@ -10,6 +10,7 @@
 
 ### x86 Emulation
 - [QEMU user manual](http://wiki.qemu.org/Qemu-doc.html)
+
 ### x86 Assembly Language
 - [Intel 80386 Programmer's Reference Manual, 1987 (HTML).](http://www.logix.cz/michal/doc/i386/)
 - [Linux 汇编语言开发指南](http://www.ibm.com/developerworks/cn/linux/l-assembly/index.html)
@@ -25,6 +26,7 @@
 ### General BIOS and PC bootstrap
  - [BIOS Services and Software Interrupts](http://www.htl-steyr.ac.at/~morg/pcinfo/hardware/interrupts/inte1at0.htm), Roger Morgan, 1997.
  - ["El Torito" Bootable CD-ROM Format Specification](http://pdos.csail.mit.edu/6.828/2014/readings/boot-cdrom.pdf),Phoenix/IBM, January 1995.
+
 ### VGA display - [console.c](https://github.com/chyyuu/ucore_lab/blob/master/labcodes/lab1/kern/driver/console.c)
  - [VESA BIOS Extension (VBE) 3.0](http://web.archive.org/web/20080302090304/http://www.vesa.org/public/VBE/vbe3.pdf) September 1998.
  - [Free VGA Project](http://www.osdever.net/FreeVGA/home.htm) J.D. Neal, 1998.
@@ -35,15 +37,18 @@
 
 ### 8259/8259A Programmable Interrupt Controller (PIC)
  - [8259A Programmable Interrupt Controller](http://pdos.csail.mit.edu/6.828/2014/readings/hardware/8259A.pdf),Intel, December 1988. 
+
 ### 16550 UART Serial Port 
  - [PC16550D Universal Asynchronous Receiver/Transmitter with FIFOs](http://www.national.com/pf/PC/PC16550D.html), National Semiconductor, 1995.
  - [http://byterunner.com/16550.html](http://byterunner.com/16550.html), Byterunner Technologies.
  - [Interfacing the Serial / RS232 Port,](http://www.beyondlogic.org/serial/serial.htm), Craig Peacock, August 2001.
+
 ### IEEE 1284 Parallel Port 
  - [Parallel Port Central](http://www.lvr.com/parport.htm), Jan Axelson.
  - [Parallel Port Background](http://www.fapo.com/porthist.htm), Warp Nine Engineering.
  - [IEEE 1284 - Updating the PC Parallel Port](http://zone.ni.com/devzone/cda/tut/p/id/3466), National Instruments.
  - [Interfacing the Standard Parallel Port](http://www.beyondlogic.org/spp/parallel.htm), Craig Peacock, August 2001.
+
 ### IDE hard drive controller 
  - [AT Attachment with Packet Interface - 6 (working draft)](http://pdos.csail.mit.edu/6.828/2014/readings/hardware/ATA-d1410r3a.pdf), ANSI, December 2001.
  - [Programming Interface for Bus Master IDE Controller](http://pdos.csail.mit.edu/6.828/2014/readings/hardware/IDE-BusMaster.pdf), Brad Hosler, Intel, May 1994.
