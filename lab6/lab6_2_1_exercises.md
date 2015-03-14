@@ -26,11 +26,13 @@
 
 后面的实验文档部分给出了Stride调度算法的大体描述。这里给出Stride调度算法的一些相关的资料（目前网上中文的资料比较欠缺）。
 
-* [http://wwwagss.informatik.uni-kl.de/Projekte/Squirrel/stride/node3.html](http://wwwagss.informatik.uni-kl.de/Projekte/Squirrel/stride/node3.html)
-* [http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.138.3502&rank=1](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.138.3502&rank=1)
+* [strid-shed paper location1](http://wwwagss.informatik.uni-kl.de/Projekte/Squirrel/stride/node3.html)
+* [strid-shed paper location2](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.138.3502&rank=1)
 * 也可GOOGLE “Stride Scheduling” 来查找相关资料
 
 执行：make grade。如果所显示的应用程序检测都输出ok，则基本正确。如果只是priority.c过不去，可执行 make run-priority 命令来单独调试它。大致执行结果可看附录。（ 使用的是 qemu-1.0.1 ）。
+
+请在实验报告中简要说明你的设计实现过程。
 
 #### 扩展练习 Challenge ：实现 Linux 的 CFS 调度算法 
 
