@@ -23,6 +23,12 @@ make　qemu
 后，如果通过check\_pgfault函数的测试后，会有“check\_pgfault()
 succeeded!”的输出，表示练习1基本正确。
 
+请在实验报告中简要说明你的设计实现过程。请回答如下问题：
+
+ - 请描述页目录项（Pag Director Entry）和页表（Page Table Entry）中组成部分对ucore实现页替换算法的潜在用处。
+ - 如果在ucore执行过程中CPU取了一条取指令并根指令含义读了一次32 bit的内存单元，请问MMU要做哪些事情？
+ - 如果ucore的缺页服务例程在执行过程中访问内存，出现了页访问异常，请问硬件要做哪些事情？
+
 #### 练习2：补充完成基于FIFO的页面替换算法（需要编程）
 
 完成vmm.c中的do\_pgfault函数，并且在实现FIFO算法的swap\_fifo.c中完成map\_swappable和swap\_out\_vistim函数。通过对swap的测试。注意：在LAB2
@@ -32,6 +38,16 @@ make　qemu
 ```
 后，如果通过check\_swap函数的测试后，会有“check\_swap()
 succeeded!”的输出，表示练习2基本正确。
+
+请在实验报告中简要说明你的设计实现过程。
+
+请在实验报告中回答如下问题：
+
+ - 如果要在ucore上实现"extended clock页替换算法"请给你的设计方案，现有的swap_manager框架是否足以支持在ucore中实现此算法？如果是，请给你的设计方案。如果不是，请给出你的新的扩展和基此扩展的设计方案。并需要回答如下问题
+   - 需要被换出的页的特征是什么？
+   - 在ucore中如何判断具有这样特征的页？
+   - 何时进行换入和换出操作？
+
 
 #### 扩展练习 Challenge：实现识别dirty bit的 extended clock页替换算法（需要编程）
 
