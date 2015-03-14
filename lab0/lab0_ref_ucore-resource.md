@@ -13,7 +13,9 @@
  - [xv6 book 中文](https://www.gitbook.com/book/th0ar/xv6-chinese/details)
  - [自己动手写操作系统](http://item.jd.com/10142246.html)于渊 著,电子工业出版社,2005
  - [Linux-0.11内核完全注释](http://oldlinux.org/download/clk011c-3.0-toc.pdf) 赵炯，2009
-
+ - [oldlinux论坛](http://www.oldlinux.org/oldlinux/)
+ - [osdev.org](http://wiki.osdev.org/Expanded_Main_Page)
+ 
 ### x86 Emulation
 - [QEMU user manual](http://wiki.qemu.org/Qemu-doc.html)
 
