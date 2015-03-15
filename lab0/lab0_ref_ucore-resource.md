@@ -15,6 +15,10 @@
  - [Linux-0.11内核完全注释](http://oldlinux.org/download/clk011c-3.0-toc.pdf) 赵炯，2009
  - [oldlinux论坛](http://www.oldlinux.org/oldlinux/)
  - [osdev.org](http://wiki.osdev.org/Expanded_Main_Page)
+
+### some OS course
+ - [6.828: Operating Systems Engineering - in MIT](http://pdos.csail.mit.edu/6.828/2014/index.html)
+ - [CS-537: Introduction to Operating Systems - in WISC](http://pages.cs.wisc.edu/~remzi/Classes/537/Fall2013/)
  
 ### x86 Emulation
 - [QEMU user manual](http://wiki.qemu.org/Qemu-doc.html)
