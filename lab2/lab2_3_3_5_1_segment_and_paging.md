@@ -5,6 +5,7 @@
 辑地址通过段式管理的地址映射可以得到线性地址，线性地址通过页式管理的地址映射得到物理地址。
 
  ![](../lab2_figs/image004.png)
+
  图 4 段页式管理总体框架图
 
 段式管理前一个实验已经讨论过。在 ucore
@@ -19,4 +20,5 @@ Linear Address 的 Directory 部分、 Table 部分和 Offset 部分）。ucore
 0。目前，ucore 用boot\_cr3（mm/pmm.c）记录这个值。
 
 ![](../lab2_figs/image006.png)
+
 图 5 分页机制管理
