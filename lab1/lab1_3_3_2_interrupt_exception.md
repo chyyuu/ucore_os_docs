@@ -16,13 +16,18 @@
 IDT和IDTR寄存器的结构和关系如下图所示：
 
 ![IDT和IDTR寄存器的结构和关系图](../lab1_figs/image007.png "IDT和IDTR寄存器的结构和关系图")
+
 图8 IDT和IDTR寄存器的结构和关系图
 
 在保护模式下，最多会存在256个Interrupt/Exception Vectors。范围[0，31]内的32个向量被异常Exception和NMI使用，但当前并非所有这32个向量都已经被使用，有几个当前没有被使用的，请不要擅自使用它们，它们被保留，以备将来可能增加新的Exception。范围[32，255]内的向量被保留给用户定义的Interrupts。Intel没有定义，也没有保留这些Interrupts。用户可以将它们用作外部I/O设备中断（8259A IRQ），或者系统调用（System Call 、Software Interrupts）等。
 
 (2)	IDT gate descriptors
 
-Interrupts/Exceptions应该使用Interrupt Gate和Trap Gate，它们之间的唯一区别就是：当调用Interrupt Gate时，Interrupt会被CPU自动禁止；而调用Trap Gate时，CPU则不会去禁止或打开中断，而是保留它原来的样子。在IDT中，可以包含如下3种类型的Descriptor：
+Interrupts/Exceptions应该使用Interrupt Gate和Trap Gate，它们之间的唯一区别就是：当调用Interrupt Gate时，Interrupt会被CPU自动禁止；而调用Trap Gate时，CPU则不会去禁止或打开中断，而是保留它原来的样子。
+
+> 【补充】所谓“自动禁止”，指的是CPU跳转到interrupt gate里的地址时，在将EFLAGS保存到栈上之后，清除EFLAGS里的IF位，以避免重复触发中断。在中断处理例程里，操作系统可以将EFLAGS里的IF设上,从而允许嵌套中断。但是必须在此之前做好处理嵌套中断的必要准备，如保存必要的寄存器等。二在ucore中访问Trap Gate的目的是为了实现系统调用。用户进程在正常执行中是不能禁止中断的，而当它发出系统调用后，将通过Trap Gate完成了从用户态（ring 3）的用户进程进了核心态（ring 0）的OS kernel。如果在到达OS kernel后禁止EFLAGS里的IF位，第一没意义（因为不会出现嵌套系统调用的情况），第二还会导致某些中断得不到及时响应，所以调用Trap Gate时，CPU则不会去禁止中断。总之，interrupt gate和trap gate之间没有优先级之分，仅仅是CPU在处理中断时有不同的方法，供操作系统在实现时根据需要进行选择。
+
+在IDT中，可以包含如下3种类型的Descriptor：
 
 - Task-gate descriptor （这里没有使用）
 - Interrupt-gate descriptor （中断方式用到）
@@ -31,6 +36,7 @@ Interrupts/Exceptions应该使用Interrupt Gate和Trap Gate，它们之间的唯
 下图图显示了80386的任务门描述符、中断门描述符、陷阱门描述符的格式：
 
 ![X86的各种门的格式](../lab1_figs/image008.png "X86的各种门的格式")
+
 图9 X86的各种门的格式
 
 可参见kern/mm/mmu.h中的struct gatedesc数据结构对中断描述符的具体定义。
