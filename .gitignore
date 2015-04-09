@@ -4,4 +4,5 @@ assets
 *.bak
 *.org
 *~
+*.dot
 autocover

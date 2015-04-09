@@ -1,6 +1,7 @@
 ## 实验目的 
 
 * 熟悉ucore中的进程同步机制，了解操作系统为进程同步提供的底层支持；
+* 了解定时器（timer）机制的实现；
 * 在ucore中理解信号量（semaphore）机制的具体实现；
 * 理解管程机制，在ucore内核中增加基于管程（monitor）的条件变量（condition
 variable）的支持；
