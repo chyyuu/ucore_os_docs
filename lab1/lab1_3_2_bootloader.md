@@ -1,5 +1,4 @@
-
-### 3.2  bootloader启动过程
+### bootloader启动过程
 
 BIOS将通过读取硬盘主引导扇区到内存，并转跳到对应内存中的位置执行bootloader。bootloader完成的工作包括：
 - 切换到保护模式，启用分段机制

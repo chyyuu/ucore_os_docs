@@ -1,5 +1,5 @@
 
-#### 2.2.1 开发OS lab实验的简单步骤
+#### 开发OS lab实验的简单步骤
 
 在某git server，比如 https://github.com/chyyuu/ucore_lab 可下载我们提供的lab1~lab8实验软件中，大致经过如下过程就可以完成使用。
 

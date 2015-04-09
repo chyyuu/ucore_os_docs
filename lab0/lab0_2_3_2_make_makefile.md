@@ -1,5 +1,5 @@
 
-#### 2.3.2 make和Makefile
+#### make和Makefile
 
 GNU make(简称make)是一种代码维护工具，在大中型项目中，它将根据程序各个模块的更新情况，自动的维护和生成目标代码。
 

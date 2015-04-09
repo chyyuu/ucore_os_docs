@@ -1,5 +1,5 @@
 
-##### 2.3.1.3 GCC基本内联汇编
+##### GCC基本内联汇编
 
 GCC 提供了两内内联汇编语句（inline asm statements）：基本内联汇编语句（basic inline asm statement)和扩展内联汇编语句（extended inline asm statement）。GCC基本内联汇编很简单，一般是按照下面的格式：
 	

@@ -1,5 +1,5 @@
 
-#### 2.2.2 通过虚拟机使用Linux实验环境（推荐：最容易的实验环境安装方法）
+#### 通过虚拟机使用Linux实验环境（推荐：最容易的实验环境安装方法）
 
 这是最简单的一种通过虚拟机方式使用Linux并完成OS各个实验的方法，不需要安装Linux操作系统和各种实验所需开发软件。首先安装VirtualBox 虚拟机软件（有windows版本和其他OS版本，可到 http://www.virtualbox.org/wiki/Downloads 下载），然后在[百度云盘上](http://pan.baidu.com/s/11zjRK)下载一个已经安装好各种所需编辑/开发/调试/运行软件的Linux实验环境的VirtualBox虚拟硬盘文件(mooc-os-2015.vdi.xz，包含一个虚拟磁盘镜像文件和两个配置描述文件，下载此文件的网址址见https://github.com/chyyuu/ucore_lab下的README中的描述)。用2345好压软件(有windows版本，可到http://www.haozip.com 下载。一般软件解压不了xz格式的压缩文件）先解压到C盘的vms目录下即：
 	C:\vms\mooc-os-2015.vdi

@@ -160,7 +160,7 @@
     * [项目组成](lab7/lab7_2_2_files.md)
   * [同步互斥的设计与实现](lab7/lab7_3_synchronization_implement.md)
     * [实验执行流程概述](lab7/lab7_3_1_experiment.md)
-    * [计时器的原理和实现](lab6/lab7_3_2_timer_implement.md)
+    * [计时器的原理和实现](lab7/lab7_3_2_timer_implement.md)
     * [同步互斥的底层支撑](lab7/lab7_3_2_synchronization_basic_support.md)
     * [信号量](lab7/lab7_3_3_semaphore.md)
     * [管程和条件变量](lab7/lab7_3_4_monitors.md)

@@ -1,5 +1,4 @@
-
-#### 3.2.4 ELF文件格式概述
+#### ELF文件格式概述
 
 ELF(Executable and linking format)文件格式是Linux系统下的一种常用目标文件(object file)格式，有三种主要类型:
 

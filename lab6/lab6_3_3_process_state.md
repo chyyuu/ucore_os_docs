@@ -1,5 +1,4 @@
-
-### 3.3 进程状态 
+###  进程状态 
 
 在此次实验中，进程的状态之间的转换需要有一个更为清晰的表述，在 ucore中，runnable的进程会被放在运行队列中。值得注意的是，在具体实现中，ucore定义的进程控制块struct proc\_struct包含了成员变量state,用于描述进程的运行状态，而running和runnable共享同一个状态(state)值(PROC\_RUNNABLE。不同之处在于处于running态的进程不会放在运行队列中。进程的正常生命周期如下：
 

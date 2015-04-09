@@ -1,4 +1,4 @@
-#### 3. 调度并执行内核线程 initproc 
+#### 调度并执行内核线程 initproc 
 
 在uCore执行完proc\_init函数后，就创建好了两个内核线程：idleproc和initproc，这时uCore当前的执行现场就是idleproc，等到执行到init函数的最后一个函数cpu\_idle之前，uCore的所有初始化工作就结束了，idleproc将通过执行cpu\_idle函数让出CPU，给其它内核线程执行，具体过程如下：
 

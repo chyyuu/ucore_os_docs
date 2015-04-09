@@ -1,5 +1,4 @@
-
-#### 2.4.3 基于qemu内建模式调试ucore
+#### 基于qemu内建模式调试ucore
 
 调试举例：调试 lab1，跟踪bootmain函数：
 
