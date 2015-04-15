@@ -72,6 +72,47 @@ static __noinline uint32_t __down(semaphore_t *sem, uint32_t wait_state) {
 }
 ```
 
+与`__down`相关的调用和被调用函数关系图如下所示：
+
+```dot
+
+digraph "__down" {
+  graph [bgcolor="#F7F5F3", fontname="Arial", fontsize="10", label="", rankdir="LR"];
+  node [shape="box", style="filled", color="blue", fontname="Arial", fontsize="10", fillcolor="white", label=""];
+  edge [color="#CC0044", fontname="Arial", fontsize="10", label=""];
+  graph [bgcolor="#F7F5F3"];
+  __N1 [color="red", label="__down"];
+  __N2 [label="__intr_save"];
+  __N3 [label="__intr_restore"];
+  __N4 [label="wait_current_set"];
+  __N5 [label="schedule"];
+  __N6 [label="wait_in_queue"];
+  __N7 [label="wait_queue_del"];
+  __N8 [label="down"];
+  __N9 [label="phi_take_forks_sema"];
+  __N10 [label="cond_signal"];
+  __N11 [label="phi_put_forks_sema"];
+  __N12 [label="cond_wait"];
+  __N13 [label="lock_mm"];
+  __N14 [label="phi_take_forks_condvar"];
+  __N15 [label="phi_put_forks_condvar"];
+  __N1 -> __N2;
+  __N1 -> __N3;
+  __N1 -> __N4;
+  __N1 -> __N5;
+  __N1 -> __N6;
+  __N1 -> __N7;
+  __N9 -> __N8;
+  __N10 -> __N8;
+  __N11 -> __N8;
+  __N12 -> __N8;
+  __N13 -> __N8;
+  __N14 -> __N8;
+  __N15 -> __N8;
+  __N8 -> __N1;
+}
+```
+
 ● \_\_up(semaphore\_t \*sem, uint32\_t
 wait\_state)：具体实现信号量的V操作，首先关中断，如果信号量对应的wait
 queue中没有进程在等待，直接把信号量的value加一，然后开中断返回；如果有进程在等待且进程等待的原因是semophore设置的，则调用wakeup\_wait函数将waitqueue中等待的第一个wait删除，且把此wait关联的进程唤醒，最后开中断返回。具体实现如下所示：
@@ -91,6 +132,45 @@ static __noinline void __up(semaphore_t *sem, uint32_t wait_state) {
     }
     local_intr_restore(intr_flag);
 }
+```
+
+与`__up`相关的调用和被调用函数关系图如下所示：
+
+```dot
+digraph "__up" {
+  graph [bgcolor="#F7F5F3", fontname="Arial", fontsize="10", label="", rankdir="LR"];
+  node [shape="box", style="filled", color="blue", fontname="Arial", fontsize="10", fillcolor="white", label=""];
+  edge [color="#CC0044", fontname="Arial", fontsize="10", label=""];
+  graph [bgcolor="#F7F5F3"];
+  __N1 [color="red", label="__up"];
+  __N2 [label="__intr_save"];
+  __N3 [label="wait_queue_first"];
+  __N5 [label="wakeup_wait"];
+  __N6 [label="__intr_restore"];
+  __N7 [label="up"];
+  __N8 [label="phi_test_sema"];
+  __N9 [label="phi_take_forks_sema"];
+  __N10 [label="cond_signal"];
+  __N11 [label="phi_put_forks_sema"];
+  __N12 [label="cond_wait"];
+  __N13 [label="unlock_mm"];
+  __N14 [label="phi_take_forks_condvar"];
+  __N15 [label="phi_put_forks_condvar"];
+  __N1 -> __N2;
+  __N1 -> __N3;
+  __N1 -> __N5;
+  __N1 -> __N6;
+  __N8 -> __N7;
+  __N9 -> __N7;
+  __N10 -> __N7;
+  __N11 -> __N7;
+  __N12 -> __N7;
+  __N13 -> __N7;
+  __N14 -> __N7;
+  __N15 -> __N7;
+  __N7 -> __N1;
+}
+
 ```
 
 对照信号量的原理性描述和具体实现，可以发现二者在流程上基本一致，只是具体实现采用了关中断的方式保证了对共享资源的互斥访问，通过等待队列让无法获得信号量的进程睡眠等待。另外，我们可以看出信号量的计数器value具有有如下性质：

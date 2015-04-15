@@ -1,6 +1,6 @@
 {
     "plugins": [
-        "autocover","grivs"
+        "autocover","grivs","duoshuo","ga"
     ],
     "pluginsConfig": {
         "autocover": {
@@ -20,6 +20,13 @@
             }
         },
         "grivs": {
-        }
+        },
+        "duoshuo": {
+            "short_name": "ucore_doc",
+            "theme": "default"
+        },
+        "ga": {
+            "token": "UA-39088953-8"
+        }        
     }
 }

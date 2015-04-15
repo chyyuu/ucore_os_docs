@@ -54,7 +54,7 @@ void wakeup_queue(wait_queue_t *queue, uint32_t wakeup_flags, bool del);
 
 ### 调用关系举例
 
-如下图所示，对于唤醒进程的函数`wakeup_wait`，可以看到它会被各种信号量的V操作函数｀up`调用，并且它会调用`wait_queue_del｀函数和｀wakup_proc`函数来完成唤醒进程的操作。
+如下图所示，对于唤醒进程的函数`wakeup_wait`，可以看到它会被各种信号量的V操作函数`up`调用，并且它会调用`wait_queue_del`函数和`wakup_proc`函数来完成唤醒进程的操作。
 ```dot
 digraph "wakeup_wait" {
   graph [bgcolor="#F7F5F3", fontname="Arial", fontsize="10", label="", rankdir="LR"];
