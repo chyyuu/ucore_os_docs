@@ -1,32 +1,21 @@
 {
-    "plugins": [
-        "autocover","grivs","duoshuo","ga"
+   "introduction": {
+        "path": "README.md",
+        "title": "介绍" },
+ "plugins": [
+     "-mathjax", "rust-playpen","grivs","ga","duoshuo", "quizzes"
     ],
+
     "pluginsConfig": {
-        "autocover": {
-            "title": "ucore lab guide",
-            "author": "Chen, Yu",
-            "font": {
-                "size": null,
-                "family": "Impact",
-                "color": "#FFF"
-            },
-            "size": {
-                "w": 1800,
-                "h": 2360
-            },
-            "background": {
-                "color": "#09F"
-            }
-        },
-        "grivs": {
+      "rust-playpen":{},
+      "grvis":{},
+       "ga": {
+            "token": "UA-39088953-8"
         },
         "duoshuo": {
-            "short_name": "ucore_doc",
+            "short_name": "mytest",
             "theme": "default"
         },
-        "ga": {
-            "token": "UA-39088953-8"
-        }        
-    }
+       "quizees":{}
+   }
 }

@@ -58,9 +58,8 @@ SFS实现了一些辅助的函数：
 
 1. sfs\_bmap\_load\_nolock：将对应 sfs\_inode 的第 index 个索引指向的 block 的索引值取出存到相应的指针指向的单元（ino\_store）。该函数只接受 index <= inode-\>blocks 的参数。当 index == inode-\>blocks 时，该函数理解为需要为 inode 增长一个 block。并标记 inode 为 dirty（所有对 inode 数据的修改都要做这样的操作，这样，当 inode 不再使用的时候，sfs 能够保证 inode 数据能够被写回到磁盘）。sfs\_bmap\_load\_nolock 调用的 sfs\_bmap\_get\_nolock 来完成相应的操作，阅读 sfs\_bmap\_get\_nolock，了解他是如何工作的。（sfs\_bmap\_get\_nolock 只由 sfs\_bmap\_load\_nolock 调用）   
 2. sfs\_bmap\_truncate\_nolock：将多级数据索引表的最后一个 entry 释放掉。他可以认为是 sfs\_bmap\_load\_nolock 中，index == inode-\>blocks 的逆操作。当一个文件或目录被删除时，sfs 会循环调用该函数直到 inode-\>blocks 减为 0，释放所有的数据页。函数通过 sfs\_bmap\_free\_nolock 来实现，他应该是 sfs\_bmap\_get\_nolock 的逆操作。和 sfs\_bmap\_get\_nolock 一样，调用 sfs\_bmap\_free\_nolock 也要格外小心。    
-3. sfs\_dirent\_read\_nolock：将目录的第 slot 个 entry 读取到指定的内存空间。他通过上面提到的函数来完成。   
-4. sfs\_dirent\_write\_nolock：用指定的 entry 来替换某个目录下的第 slot 个entry。他通过调用 sfs\_bmap\_load\_nolock保证，当第 slot 个entry 不存在时（slot == inode-\>blocks），SFS 会分配一个新的entry，即在目录尾添加了一个 entry。   
-5. sfs\_dirent\_search\_nolock：是常用的查找函数。他在目录下查找 name，并且返回相应的搜索结果（文件或文件夹）的 inode 的编号（也是磁盘编号），和相应的 entry 在该目录的 index 编号以及目录下的数据页是否有空闲的 entry。（SFS 实现里文件的数据页是连续的，不存在任何空洞；而对于目录，数据页不是连续的，当某个 entry 删除的时候，SFS 通过设置 entry-\>ino 为0将该 entry 所在的 block 标记为 free，在需要添加新 entry 的时候，SFS 优先使用这些 free 的 entry，其次才会去在数据页尾追加新的 entry。    
+3. sfs\_dirent\_read\_nolock：将目录的第 slot 个 entry 读取到指定的内存空间。他通过上面提到的函数来完成。     
+4. sfs\_dirent\_search\_nolock：是常用的查找函数。他在目录下查找 name，并且返回相应的搜索结果（文件或文件夹）的 inode 的编号（也是磁盘编号），和相应的 entry 在该目录的 index 编号以及目录下的数据页是否有空闲的 entry。（SFS 实现里文件的数据页是连续的，不存在任何空洞；而对于目录，数据页不是连续的，当某个 entry 删除的时候，SFS 通过设置 entry-\>ino 为0将该 entry 所在的 block 标记为 free，在需要添加新 entry 的时候，SFS 优先使用这些 free 的 entry，其次才会去在数据页尾追加新的 entry。    
 
 注意，这些后缀为 nolock 的函数，只能在已经获得相应 inode 的semaphore才能调用。
 
