@@ -1,7 +1,8 @@
-# uCore OS实验指导书和源码网址 (2015)
+# uCore OS实验指导书和源码网址 (2017)
 
 - [ucore实验指导书](http://objectkuan.gitbooks.io/ucore-docs/)
 - [ucore labs 1-8 源码和参考答案 ](https://github.com/chyyuu/ucore_lab)
+- [os tutorial lab](https://github.com/chyyuu/os_tutorial_lab)
 
 # 实验总体流程
 1. 在[学堂在线](https://www.xuetangx.com/courses/TsinghuaX/30240243X/2015_T1/about)查看OS相关原理和labX的视频；
