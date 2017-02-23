@@ -65,7 +65,7 @@ gdb 是功能强大的调试程序，可完成如下的调试任务：
 		gets (string);
 		printf ("\nYour string is: %s\n", string);
 	}
- ``
+ ```
 这个程序是接受用户的输入，然后将用户的输入打印出来。该程序使用了一个未经过初始化的字符串地址 string，因此，编译并运行之后，将出现 "Segment Fault"错误：
 
 	$ gcc -o bugging -g  bugging.c
