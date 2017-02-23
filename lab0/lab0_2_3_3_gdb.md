@@ -30,6 +30,7 @@ gdb 是功能强大的调试程序，可完成如下的调试任务：
 键入 help 后跟命令的分类名，可获得该类命令的详细清单。gdb的常用命令如下表所示。
 
 表 gdb 的常用命令
+
 <table>
 <tr><td>break FILENAME:NUM</td><td>在特定源文件特定行上设置断点</td></tr>
 <tr><td>clear FILENAME:NUM</td><td>删除设置在特定源文件特定行上的断点</td></tr>
@@ -51,11 +52,13 @@ gdb 是功能强大的调试程序，可完成如下的调试任务：
 <tr><td>list</td><td>显示被调试程序的源代码</td></tr>
 <tr><td>quit</td><td>退出 gdb</td></tr>
 </table>
+
+#### gdb调试实例
 下面以一个有错误的例子程序来介绍gdb的使用：
 
 	/*bugging.c*/
 	#include <stdio.h>
-	#include <stdlib.h>    
+	#include <stdlib.h>
 	
 	static char buff [256];
 	static char* string;
