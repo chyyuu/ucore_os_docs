@@ -26,21 +26,19 @@
 <tr><td>窗口一</td><td>窗口二</td>
 <tr>
 <td>
-chy@laptop: ~/lab1$ qemu -S  -s -hda ./bin/ucore.img 
+chy@laptop: ~/lab1$ qemu -S -s -hda ./bin/ucore.img 
 </td>
 <td>
-chy@laptop: ~/lab1$ gdb ./bin/kernel<br>
-(gdb) target remote:1234<br>
-Remote debugging using :1234<br>
-0x0000fff0 in ?? ()<br>
-(gdb) file obj/kernel/kernel.elf<br>
-(gdb) break memset<br>
-Breakpoint 1 at 0x100d9f: file libs/string.c, line 54. <br>
-(gdb) run<br>
-Starting program: /home/chenyu/oscourse/develop/ucore/lab1/bin/kernel <br>
- <br>
-Breakpoint 1, memset (s=0x1020fc, c=0 '\000', n=12) at libs/string.c:54<br>
-54                return __memset(s, c, n); <br>
+chy@laptop: ~/lab1$ gdb ./bin/kernel <br>
+(gdb) target remote:1234 <br>
+Remote debugging using :1234 <br>
+0x0000fff0 in ?? () <br>
+(gdb) break memset <br>
+Breakpoint 1, memset (s=0xc029b000, c=0x0, n=0x1000) at libs/string.c:271 <br>
+(gdb) continue <br>
+Continuing. <br>
+Breakpoint 1, memset (s=0xc029b000, c=0x0, n=0x1000) at libs/string.c:271 <br>
+271     memset(void *s, char c, size_t n) { <br>
 (gdb)
 </td>
 </tr></table>
