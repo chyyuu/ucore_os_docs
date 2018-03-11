@@ -31,7 +31,7 @@ succeeded!”的输出，表示练习1基本正确。
 
 #### 练习2：补充完成基于FIFO的页面替换算法（需要编程）
 
-完成vmm.c中的do\_pgfault函数，并且在实现FIFO算法的swap\_fifo.c中完成map\_swappable和swap\_out\_vistim函数。通过对swap的测试。注意：在LAB2
+完成vmm.c中的do\_pgfault函数，并且在实现FIFO算法的swap\_fifo.c中完成map\_swappable和swap\_out\_victim函数。通过对swap的测试。注意：在LAB2
 EXERCISE 2处填写代码。执行
 ```
 make　qemu
