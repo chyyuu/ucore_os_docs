@@ -51,12 +51,11 @@ asm [volatile] ( Assembler Template
 	void main()
 	{
 		asm(
-			"cld nt"
-			"rep nt"
+			"cld \n\t"
+			"rep \n\t"
 			"stosl"
 		:
-		: "c" (count), "a" (value) , "D" (buf[0])
-		: "%ecx","%edi"
+		: "c" (count), "a" (value) , "D" (buf)
 		);
 	}
 ```
