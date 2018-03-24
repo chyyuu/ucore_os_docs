@@ -11,7 +11,7 @@ first\_fit分配算法需要维护一个查找有序（地址按从小到大排�
 libs/list.h定义了可挂接任意元素的通用双向链表结构和对应的操作，所以需要了解如何使用这个文件提供的各种函数，从而可以完成对双向链表的初始化/插入/删除等。
 
 kern/mm/memlayout.h中定义了一个 free\_area\_t 数据结构，包含成员结构
-```
+```c
   list_entry_t free_list;         // the list header   空闲块双向链表的头
   unsigned int nr_free;           // # of free pages in this free list  空闲块的总数（以页为单位）
 ```
@@ -29,8 +29,8 @@ kern_init --> pmm_init-->page_init-->init_memmap--> pmm_manager->init_memmap
 
 **设计实现**
 
-default\_init\_memmap函数讲根据每个物理页帧的情况来建立空闲页链表，且空闲页块应该是根据地址高低形成一个有序链表。根据上述变量的定义，default\_init\_memmap可大致实现如下：
-```
+default\_init\_memmap函数将根据每个物理页帧的情况来建立空闲页链表，且空闲页块应该是根据地址高低形成一个有序链表。根据上述变量的定义，default\_init\_memmap可大致实现如下：
+```c
 default_init_memmap(struct Page *base, size_t n) {
     struct Page *p = base;
     for (; p != base + n; p ++) {
@@ -44,19 +44,19 @@ default_init_memmap(struct Page *base, size_t n) {
 }
 ```
 如果要分配一个页，那要考虑哪些呢？这里就需要考虑实现default\_alloc\_pages函数，注意参数n表示要分配n个页。另外，需要注意实现时尽量多考虑一些边界情况，这样确保软件的鲁棒性。比如
-```
+```c
 if (n > nr_free) {
 return NULL;
 }
 ```
 这样可以确保分配不会超出范围。也可加一些
 assert函数，在有错误出现时，能够迅速发现。比如 n应该大于0，我们就可以加上
-```
+```c
 assert(n \> 0);
 ```
-这样在n<=0的情况下，ucore会迅速报错。firstfit需要从空闲链表头开始查找最小的地址，通过list\_next找到下一个空闲块元素，通过le2page宏可以更加链表元素获得对应的Page指针p。通过p-\>property可以了解此空闲块的大小。如果\>=n，这就找到了！如果<n，则list\_next，继续查找。直到list\_next==
+这样在n<=0的情况下，ucore会迅速报错。firstfit需要从空闲链表头开始查找最小的地址，通过list\_next找到下一个空闲块元素，通过le2page宏可以由链表元素获得对应的Page指针p。通过p-\>property可以了解此空闲块的大小。如果\>=n，这就找到了！如果<n，则list\_next，继续查找。直到list\_next==
 &free\_list，这表示找完了一遍了。找到后，就要从新组织空闲块，然后把找到的page返回。所以default\_alloc\_pages可大致实现如下：
-```
+```c
 static struct Page *
 default_alloc_pages(size_t n) {
     if (n > nr_free) {
