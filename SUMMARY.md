@@ -116,7 +116,7 @@
   * [Page Fault异常处理](lab3/lab3_4_page_fault_handler.md)
   * [页面置换机制的实现](lab3/lab3_5_swapping.md)
     * [页替换算法](lab3/lab3_5_1_page_swapping.md)
-    * [页面置换机制实验报告要求](lab3/lab3_5_2_page_swapping_principles.md)
+    * [页面置换机制](lab3/lab3_5_2_page_swapping_principles.md)
   * [实验报告要求](lab3/lab3_6_labs_requirement.md)
 
 ## Lab 4
