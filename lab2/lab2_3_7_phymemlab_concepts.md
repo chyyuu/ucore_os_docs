@@ -6,7 +6,7 @@ ucore
 kernel各个部分由组成kernel的各个.o或.a文件构成，且各个部分在内存中地址位置由ld工具根据kernel.ld链接脚本（linker
 script）来设定。ld工具使用命令-T指定链接脚本。链接脚本主要用于规定如何把输入文件（各个.o或.a文件）内的section放入输出文件（lab2/bin/kernel，即ELF格式的ucore内核）内，
 并控制输出文件内各部分在程序地址空间内的布局。下面简单分析一下/lab2/tools/kernel.ld，来了解一下ucore内核的地址布局情况。kernel.ld的内容如下所示：
-```asm
+```
 /* Simple linker script for the ucore kernel.
    See the GNU ld 'info' manual ("info ld") to learn the syntax. */
 
@@ -122,7 +122,7 @@ segment）：指用来存放程序执行代码的一块内存区域。这部分�
 extern char edata[], end[];
 ```
 但搜寻所有源码文件\*.[ch]，没有发现有这两个变量的定义。那这两个变量从哪里来的呢？其实在lab2/tools/kernel.ld中，可以看到如下内容：
-```asm
+```
 …
 .text : {
         *(.text .stub .text.* .gnu.linkonce.t.*)

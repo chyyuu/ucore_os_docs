@@ -52,7 +52,7 @@ SECTIONS {
                 virt addr - 0xC0000000 = linear addr  = phy addr # 物理地址在0~4MB之内的三者映射关系
 ```
 请注意`pmm_init`函数中的一条语句：
-```
+```c
  boot_pgdir[0] = boot_pgdir[PDX(KERNBASE)];
 ```
 就是用来建立物理地址在0~4MB之内的三个地址间的临时映射关系`virt addr - 0xC0000000 = linear addr = phy addr`。
