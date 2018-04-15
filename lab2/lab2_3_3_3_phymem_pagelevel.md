@@ -52,7 +52,7 @@ npage = maxpa / PGSIZE
 ```
 这样，我们就可以预估出管理页级物理内存空间所需的Page结构的内存空间所需的内存大小为：
 ```
-sizeof(struct Page) * npage)
+sizeof(struct Page) * npage
 ```
 由于bootloader加载ucore的结束地址（用全局指针变量end记录）以上的空间没有被使用，所以我们可以把end按页大小为边界去整后，作为管理页级物理内存空间所需的Page结构的内存空间，记为：
 ```
