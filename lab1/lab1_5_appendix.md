@@ -37,7 +37,7 @@ si
 si
 ...
 ```
-4 此时的`CS=0xf, IP=fff0`，如果想看BIOS的代码
+4 此时的`CS=0xf000, EIP=0xfff0`，如果想看BIOS的代码
 ```
 x /2i 0xffff0
 ```
