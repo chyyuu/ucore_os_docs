@@ -45,12 +45,12 @@ boot\_pgdir[PDX(VPT)] = PADDR(boot\_pgdir) | PTE\_P | PTE\_W;
 
 所以最大内核虚地址KERNTOP的页目录项虚地址为
 ```
-vpd+0xF8000000/0x400000=0xFAFEB000+0x3E0=0xFAFEB3E0
+vpd+0xF8000000/0x400000*4=0xFAFEB000+0x3E0*4=0xFAFEBF80
 ```
 
 最大内核虚地址KERNTOP的页表项虚地址为：
 ```
-vpt+0xF8000000/0x1000=0xFAC00000+0xF8000=0xFACF8000
+vpt+0xF8000000/0x1000*4=0xFAC00000+0xF8000*4=0xFAFE0000
 ```
 
 > 需要注意，页目录项和页表项是4字节对齐的。从上面的设置可以看出KERNTOP/4M后的值是4字节对齐的，所以这样算出来的页目录项和页表项地址的最后两位一定是0。
