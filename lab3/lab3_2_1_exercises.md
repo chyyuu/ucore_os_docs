@@ -16,7 +16,7 @@
 完成do\_pgfault（mm/vmm.c）函数，给未被映射的地址映射上物理页。设置访问权限
 的时候需要参考页面所在 VMA
 的权限，同时需要注意映射物理页时需要操作内存控制
-结构所指定的页表，而不是内核的页表。注意：在LAB2 EXERCISE
+结构所指定的页表，而不是内核的页表。注意：在LAB3 EXERCISE
 1处填写代码。执行
 ```
 make　qemu
@@ -26,12 +26,12 @@ succeeded!”的输出，表示练习1基本正确。
 
 请在实验报告中简要说明你的设计实现过程。请回答如下问题：
 
- - 请描述页目录项（Pag Director Entry）和页表（Page Table Entry）中组成部分对ucore实现页替换算法的潜在用处。
+ - 请描述页目录项（Page Directory Entry）和页表项（Page Table Entry）中组成部分对ucore实现页替换算法的潜在用处。
  - 如果ucore的缺页服务例程在执行过程中访问内存，出现了页访问异常，请问硬件要做哪些事情？
 
 #### 练习2：补充完成基于FIFO的页面替换算法（需要编程）
 
-完成vmm.c中的do\_pgfault函数，并且在实现FIFO算法的swap\_fifo.c中完成map\_swappable和swap\_out\_victim函数。通过对swap的测试。注意：在LAB2
+完成vmm.c中的do\_pgfault函数，并且在实现FIFO算法的swap\_fifo.c中完成map\_swappable和swap\_out\_victim函数。通过对swap的测试。注意：在LAB3
 EXERCISE 2处填写代码。执行
 ```
 make　qemu

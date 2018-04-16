@@ -48,8 +48,8 @@ SECTIONS {
 
 **第三个阶段**从enable_page函数开始，到执行gdt_init函数（在kern/mm/pmm.c中）之前，启动了页映射机制，但没有第三次更新段映射。这时的虚拟地址，线性地址以及物理地址之间的映射关系比较微妙： 
 ``` 
- lab2 stage 3:  virt addr - 0xC0000000 = linear addr  = phy addr + 0xC0000000 # 物理地址在0~4MB之外的三者映射关系
-                virt addr - 0xC0000000 = linear addr  = phy addr # 物理地址在0~4MB之内的三者映射关系
+ lab2 stage 3:  virt addr - 0xC0000000 = linear addr  = phy addr + 0xC0000000 # 线性地址在0~4MB之外的三者映射关系
+                virt addr - 0xC0000000 = linear addr  = phy addr # 线性地址在0~4MB之内的三者映射关系
 ```
 请注意`pmm_init`函数中的一条语句：
 ```c
