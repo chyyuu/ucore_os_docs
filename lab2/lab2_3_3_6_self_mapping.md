@@ -32,14 +32,14 @@ boot\_pgdir[PDX(VPT)] = PADDR(boot\_pgdir) | PTE\_P | PTE\_W;
 这些变量和语句有何特殊含义呢？其实vpd变量的值就是页目录表的起始虚地址0xFAFEB000，且它的高10位和中10位是相等的，都是10进制的1003。当执行了上述语句，就确保了vpd变量的值就是页目录表的起始虚地址，且vpt是页目录表中第一个目录表项指向的页表的起始虚地址。此时描述内核虚拟空间的页目录表的虚地址为0xFAFEB000，大小为4KB。页表的理论连续虚拟地址空间0xFAC00000\~0xFB000000，大小为4MB。因为这个连续地址空间的大小为4MB，可有1M个PTE，即可映射4GB的地址空间。
 
 但ucore实际上不会用完这么多项，在memlayout.h中定义了常量
-```
+```c
 #define KERNBASE 0xC0000000
 #define KMEMSIZE 0x38000000 // the maximum amount of physical memory
 #define KERNTOP (KERNBASE + KMEMSIZE)
 ```
 
 表示ucore只支持896MB的物理内存空间，这个896MB只是一个设定，可以根据情况改变。则最大的内核虚地址为常量
-```
+```c
 #define KERNTOP (KERNBASE + KMEMSIZE)=0xF8000000
 ```
 

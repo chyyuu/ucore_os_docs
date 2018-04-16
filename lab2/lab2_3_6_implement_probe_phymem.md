@@ -1,11 +1,11 @@
 **实现物理内存探测**
 
 物理内存探测是在bootasm.S中实现的，相关代码很短，如下所示：
-```
+```x86asm
 probe_memory:
 //对0x8000处的32位单元清零,即给位于0x8000处的
 //struct e820map的成员变量nr_map清零
-           movl $0, 0x8000
+                  movl $0, 0x8000
                   xorl %ebx, %ebx
 //表示设置调用INT 15h BIOS中断后，BIOS返回的映射地址描述符的起始地址
                   movw $0x8004, %di
