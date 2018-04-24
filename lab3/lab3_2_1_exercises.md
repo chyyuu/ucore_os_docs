@@ -49,6 +49,7 @@ succeeded!”的输出，表示练习2基本正确。
    - 何时进行换入和换出操作？
 
 
-#### 扩展练习 Challenge：实现识别dirty bit的 extended clock页替换算法（需要编程）
+#### 扩展练习 Challenge 1：实现识别dirty bit的 extended clock页替换算法（需要编程）
 
+#### 扩展练习 Challenge 2：实现不考虑实现开销和效率的LRU页替换算法（需要编程）
 challenge部分不是必做部分，不过在正确最后会酌情加分。需写出有详细的设计、分析和测试的实验报告。完成出色的可获得适当加分。
