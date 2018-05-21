@@ -51,7 +51,7 @@
 fault处理相关的do\_pgfault函数是本次实验需要涉及完成的。
 * kern/mm/swap.[ch]：定义了实现页替换算法类框架struct swap\_manager。swap.c包含了对此页替换算法类框架的初始化、页换入/换出等各种函数实现。重点是要理解何时调用swap\_out和swap\_in函数。和如何在此框架下连接具体的页替换算法实现。check\_swap函数以及被此函数调用的\_fifo\_check\_swap函数完成了对本次实验中的练习2：FIFO页替换算法基本正确性的检查，可了解，便于知道为何产生错误。
 * kern/mm/swap\_fifo.[ch]：FIFO页替换算法的基于页替换算法类框架struct swap\_manager的简化实现，主要被swap.c的相关函数调用。重点是\_fifo\_map\_swappable函数（可用于建立页访问属性和关系，比如访问时间的先后顺序）和\_fifo\_swap\_out\_victim函数（可用于实现挑选出要换出的页），当然换出哪个页需要借助于fifo\_map\_swappable函数建立的某种属性关系，已选出合适的页。
-* kern/mm/mmu.h：其中定义额也页表项的各种属性位，比如PTE\_P\\PET\_D\\PET\_A等，对于实现扩展实验的clock算法会有帮助。
+* kern/mm/mmu.h：其中定义了页表项的各种属性位，比如PTE\_P\\PET\_D\\PET\_A等，对于实现扩展实验的clock算法会有帮助。
 
 本次实验的主要练习集中在vmm.c中的do\_pgfault函数和swap\_fifo.c中的\_fifo\_map\_swappable函数、\_fifo\_swap\_out\_victim函数。
 

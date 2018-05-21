@@ -4,7 +4,7 @@
 Page数据结构来表示。由于一个物理页需要占用一个Page结构的空间，Page结构在设计时须尽可能小，以减少对内存的占用。Page的定义在kern/mm/memlayout.h中。以页为单位的物理内存分配管理的实现在kern/default\_pmm.[ch]。
 
 为了与以后的分页机制配合，我们首先需要建立对整个计算机的每一个物理页的属性用结构Page来表示，它包含了映射此物理页的虚拟页个数，描述物理页属性的flags和双向链接各个Page结构的page\_link双向链表。
-```
+```c
 struct Page {
     int ref;        // page frame's reference counter
     uint32_t flags; // array of flags that describe the status of the page frame
@@ -12,8 +12,8 @@ struct Page {
     list_entry_t page_link;// free list link
 };
 ```
-这里看看Page数据结构的各个成员变量有何具体含义。ref表示这样页被页表的引用记数（在“实现分页机制”一节会讲到）。如果这个页被页表引用了，即在某页表中有一个页表项设置了一个虚拟页到这个Page管理的物理页的映射关系，就会把Page的ref加一；反之，若页表项取消，即映射关系解除，就会把Page的ref减一。flags表示此物理页的状态标记，进一步查看kern/mm/memlayout.h中的定义，可以看到：
-```
+这里看看Page数据结构的各个成员变量有何具体含义。ref表示这页被页表的引用记数（在“实现分页机制”一节会讲到）。如果这个页被页表引用了，即在某页表中有一个页表项设置了一个虚拟页到这个Page管理的物理页的映射关系，就会把Page的ref加一；反之，若页表项取消，即映射关系解除，就会把Page的ref减一。flags表示此物理页的状态标记，进一步查看kern/mm/memlayout.h中的定义，可以看到：
+```c
 /* Flags describing the status of a page frame */
 #define PG_reserved                 0       // the page descriptor is reserved for kernel or unusable
 #define PG_property                 1       // the member 'property' is valid
@@ -34,7 +34,7 @@ Head
 Page）。连续内存空闲块利用这个页的成员变量page\_link来链接比它地址小和大的其他连续内存空闲块。
 
 在初始情况下，也许这个物理内存的空闲物理页都是连续的，这样就形成了一个大的连续内存空闲块。但随着物理页的分配与释放，这个大的连续内存空闲块会分裂为一系列地址不连续的多个小连续内存空闲块，且每个连续内存空闲块内部的物理页是连续的。那么为了有效地管理这些小连续内存空闲块。所有的连续内存空闲块可用一个双向链表管理起来，便于分配和释放，为此定义了一个free\_area\_t数据结构，包含了一个list\_entry结构的双向链表指针和记录当前空闲页的个数的无符号整型变量nr\_free。其中的链表指针指向了空闲的物理页。
-```
+```c
 /* free_area_t - maintains a doubly linked list to record free (unused) pages */
 typedef struct {
             list_entry_t free_list;                                // the list header
@@ -43,38 +43,38 @@ typedef struct {
 ```
 有了这两个数据结构，ucore就可以管理起来整个以页为单位的物理内存空间。接下来需要解决两个问题：
 
-• 管理页级物理内存空间所需的Page结构的内存空间从哪里开始，占多大空间？
-• 空闲内存空间的起始地址在哪里？
+- 管理页级物理内存空间所需的Page结构的内存空间从哪里开始，占多大空间？
+- 空闲内存空间的起始地址在哪里？
 
 对于这两个问题，我们首先根据bootloader给出的内存布局信息找出最大的物理内存地址maxpa（定义在page\_init函数中的局部变量），由于x86的起始物理内存地址为0，所以可以得知需要管理的物理页个数为
-```
+```c
 npage = maxpa / PGSIZE
 ```
 这样，我们就可以预估出管理页级物理内存空间所需的Page结构的内存空间所需的内存大小为：
-```
+```c
 sizeof(struct Page) * npage
 ```
-由于bootloader加载ucore的结束地址（用全局指针变量end记录）以上的空间没有被使用，所以我们可以把end按页大小为边界去整后，作为管理页级物理内存空间所需的Page结构的内存空间，记为：
-```
+由于bootloader加载ucore的结束地址（用全局指针变量end记录）以上的空间没有被使用，所以我们可以把end按页大小为边界取整后，作为管理页级物理内存空间所需的Page结构的内存空间，记为：
+```c
 pages = (struct Page *)ROUNDUP((void *)end, PGSIZE);
 ```
 为了简化起见，从地址0到地址pages+ sizeof(struct Page) \*
 npage)结束的物理内存空间设定为已占用物理内存空间（起始0\~640KB的空间是空闲的），地址pages+
 sizeof(struct Page) \*
 npage)以上的空间为空闲物理内存空间，这时的空闲空间起始地址为
-```
+```c
 uintptr_t freemem = PADDR((uintptr_t)pages + sizeof(struct Page) * npage);
 ```
 为此我们需要把这两部分空间给标识出来。首先，对于所有物理空间，通过如下语句即可实现占用标记：
-```
+```c
 for (i = 0; i < npage; i ++) {
 SetPageReserved(pages + i);
 }
-````
-然后，根据探测到的空闲物理空间，通过如下语句即可实现空闲标记：
 ```
+然后，根据探测到的空闲物理空间，通过如下语句即可实现空闲标记：
+```c
 //获得空闲空间的起始地址begin和结束地址end
-……
+...
 init_memmap(pa2page(begin), (end - begin) / PGSIZE);
 ```
 其实SetPageReserved只需把物理地址对应的Page结构中的flags标志设置为PG\_reserved
@@ -83,7 +83,7 @@ init_memmap(pa2page(begin), (end - begin) / PGSIZE);
 关于内存分配的操作系统原理方面的知识有很多，但在本实验中只实现了最简单的内存页分配算法。相应的实现在default\_pmm.c中的default\_alloc\_pages函数和default\_free\_pages函数，相关实现很简单，这里就不具体分析了，直接看源码，应该很好理解。
 
 其实实验二在内存分配和释放方面最主要的作用是建立了一个物理内存页管理器框架，这实际上是一个函数指针列表，定义如下：
-```
+```c
 struct pmm_manager {
             const char *name; //物理内存页管理器的名字
             void (*init)(void); //初始化内存管理器

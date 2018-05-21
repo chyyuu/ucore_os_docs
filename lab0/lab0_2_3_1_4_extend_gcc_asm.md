@@ -71,7 +71,7 @@ void main()
 
 得到的主要汇编代码为：
 
-```asm
+```x86asm
 movl count,%ecx
 movl value,%eax
 movl buf,%edi
@@ -106,7 +106,7 @@ asm("leal (%1,%1,4),%0"
 
 这段代码到的主要汇编代码为：
 
-```asm
+```x86asm
 movl x,%eax
 #APP
 leal (%eax,%eax,4),%eax

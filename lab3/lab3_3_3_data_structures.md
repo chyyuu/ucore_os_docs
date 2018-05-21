@@ -12,7 +12,7 @@ fault异常时，可获得访问的内存的方式（读或写）以及具体的
 
 在ucore中描述应用程序对虚拟内存“需求”的数据结构是vma\_struct（定义在vmm.h中），以及针对vma\_struct的函数操作。这里把一个vma\_struct结构的变量简称为vma变量。vma\_struct的定义如下：
 
-```
+```c
 struct vma_struct {
     // the set of vma using the same PDT
     struct mm_struct *vm_mm;
@@ -26,7 +26,7 @@ struct vma_struct {
 
 vm\_start和vm\_end描述了一个连续地址的虚拟内存空间的起始位置和结束位置，这两个值都应该是PGSIZE 对齐的，而且描述的是一个合理的地址空间范围（即严格确保 vm\_start < vm\_end的关系）；list\_link是一个双向链表，按照从小到大的顺序把一系列用vma\_struct表示的虚拟内存空间链接起来，并且还要求这些链起来的vma\_struct应该是不相交的，即vma之间的地址空间无交集；vm\_flags表示了这个虚拟内存空间的属性，目前的属性包括：
 
-```
+```c
 #define VM_READ 0x00000001 //只读
 #define VM_WRITE 0x00000002 //可读写
 #define VM_EXEC 0x00000004 //可执行
@@ -34,7 +34,7 @@ vm\_start和vm\_end描述了一个连续地址的虚拟内存空间的起始位�
 
 vm\_mm是一个指针，指向一个比vma\_struct更高的抽象层次的数据结构mm\_struct，这里把一个mm\_struct结构的变量简称为mm变量。这个数据结构表示了包含所有虚拟内存空间的共同属性，具体定义如下  
 
-```  
+```  c
 struct mm_struct {
     // linear list link which sorted by start addr of vma
     list_entry_t mmap_list;
