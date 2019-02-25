@@ -63,3 +63,4 @@ SECTIONS {
  lab2 stage 4： virt addr = linear addr = phy addr + 0xC0000000  
 ```
 
+TODO(twd2): 更新该文档，使其和ucore_os_lab #37保持一致。
