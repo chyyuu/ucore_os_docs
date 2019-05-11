@@ -28,5 +28,5 @@
 
 # 维护者
 - yuchen AT tsinghua.edu.cn
+- xyong AT tsinghua.edu.cn
 - objectkuan AT gmail.com
-- xuyongjiande AT gmail.com
