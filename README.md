@@ -1,4 +1,4 @@
-# uCore OS实验指导书和源码网址 (2017)
+# uCore OS实验指导书和源码网址 (2019)
 
 - [ucore实验指导书](https://chyyuu.gitbooks.io/ucore_os_docs/content/)
 - [ucore labs 1-8 源码和参考答案 ](https://github.com/chyyuu/ucore_lab)
